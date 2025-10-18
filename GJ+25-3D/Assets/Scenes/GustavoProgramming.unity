@@ -672,7 +672,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1788872005}
   - component: {fileID: 1788872004}
-  - component: {fileID: 1788872008}
   - component: {fileID: 1788872006}
   - component: {fileID: 1788872007}
   m_Layer: 0
@@ -770,6 +769,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  speed: 0.1
+  isDashing: 0
+  dashDuration: 0.1
   attackCooldown: 2
   attackTimer: 0
   leftAtkPoint: {fileID: 422908265}
@@ -778,12 +780,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   atkRange: 0.2
-  speed: 0.1
-  isDashing: 0
-  dashDuration: 0.1
   projectilePrefab: {fileID: 623720071277163541, guid: c5e7b10ac606fbb4aa326df3cbb8940c, type: 3}
   piercingProjectilePrefab: {fileID: 623720071277163541, guid: c5831dad02606e54996035e0819f9b9d, type: 3}
   shotSpeed: 0.5
+  comboSteps:
+  - type: 0
+    cooldownMultiplier: 1
+  - type: 2
+    cooldownMultiplier: 1
+  - type: 2
+    cooldownMultiplier: 1
 --- !u!54 &1788872007
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -811,34 +817,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1788872008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788872003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6c2b3d91bb23f043a00ed9268095f9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combo:
-  - type: 0
-    cooldownMultiplier: 1
-    repeatCount: 1
-    label: melee
-  - type: 2
-    cooldownMultiplier: 1
-    repeatCount: 2
-    label: shot
-  handleInput: 1
-  leftKey: 276
-  rightKey: 275
-  useComboCooldownMultipliers: 1
-  verboseLogs: 1
-  currentIndex: 0
-  repeatsLeftOnCurrent: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
