@@ -42,7 +42,8 @@ public class PlayerScript : MonoBehaviour
         DoubleMelee,
         Shoot,
         ShootPiercing,
-        NoDebuffDash
+        LongMelee,
+        Howl
     }
 
     [System.Serializable]
@@ -134,7 +135,7 @@ public class PlayerScript : MonoBehaviour
         if (currentComboIndex >= comboSteps.Count)
             currentComboIndex = 0;
 
-        attackTimer = 0f;
+        
     }
 
     private void ExecuteAttackType(AttackType type, Transform atkPoint)
@@ -153,9 +154,16 @@ public class PlayerScript : MonoBehaviour
             case AttackType.ShootPiercing:
                 ShootProjectile(true);
                 break;
-            case AttackType.NoDebuffDash:
-                NoDebuffAttack(atkPoint);
+            case AttackType.LongMelee:
+                LongAttack(atkPoint, extraRange: 0.2f);
                 break;
+            case AttackType.Howl:
+                Howl(range: 10f, duration: 2f);
+                break;
+            default:
+                Attack(atkPoint);
+                break;
+
         }
     }
 
@@ -259,10 +267,63 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void LongAttack(Transform atkPoint, float extraRange)
+    {
+        StartCoroutine(LongAttackDash(atkPoint, extraRange));
+    }
+
+    private IEnumerator LongAttackDash(Transform atkPoint, float extraRange)
+    {
+        float originalRange = atkRange;
+        atkRange += extraRange;
+
+        Collider[] hits = Physics.OverlapSphere(atkPoint.position, atkRange, enemyLayer);
+
+        if (hits.Length > 0)
+        {
+            Transform closestHit = hits[0].transform;
+            Collider actualTarget = hits[0];
+            foreach (Collider hit in hits)
+            {
+                if (Vector3.Distance(hit.transform.position, transform.position) < Vector3.Distance(closestHit.position, transform.position))
+                {
+                    closestHit = hit.transform;
+                    actualTarget = hit;
+                }
+            }
+            yield return StartCoroutine(DashAndHit(atkPoint, actualTarget));
+        }
+        else
+        {
+            yield return StartCoroutine(DashAndMiss(atkPoint, true));
+        }
+
+        atkRange = originalRange;
+    }
+
+    public void Howl(float range, float duration)
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, range, enemyLayer);
+
+        foreach (Collider hit in hits)
+        {
+            bool isRight = !spr.flipX;
+            bool enemyIsRight = hit.transform.position.x > transform.position.x;
+
+            if ((isRight && enemyIsRight) || (!isRight && !enemyIsRight))
+            {
+                EnemyScript enemy = hit.GetComponent<EnemyScript>();
+                if (enemy != null)
+                {
+                    enemy.StartCoroutine(enemy.Paralyze(duration));
+                }
+            }
+        }
+    }
     public void TakeDamage(int damage)
     {
         health -= damage;
-        if (health <= 0) Destroy(gameObject);
+        if (health <= 0) Destroy(gameObject); //ao invés disso, volta pro main menu
     }
 
     private void OnDrawGizmos()
@@ -270,6 +331,14 @@ public class PlayerScript : MonoBehaviour
         Gizmos.color = Color.red;
         if (leftAtkPoint != null) Gizmos.DrawWireSphere(leftAtkPoint.position, atkRange);
         if (rightAtkPoint != null) Gizmos.DrawWireSphere(rightAtkPoint.position, atkRange);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(1);
+        }
     }
 
     public void InsertAttackType(int type)
@@ -315,10 +384,16 @@ public class PlayerScript : MonoBehaviour
 
             case 5:
                 {
-                    var attackType = new AttackStep() { type = AttackType.NoDebuffDash, cooldownMultiplier = 1f };
+                    var attackType = new AttackStep() { type = AttackType.LongMelee, cooldownMultiplier = 1f };
 
                     comboSteps.Add(attackType);
 
+                    break;
+                }
+            case 6:
+                {                     
+                    var attackType = new AttackStep() { type = AttackType.Howl, cooldownMultiplier = 1f };
+                    comboSteps.Add(attackType);
                     break;
                 }
 
