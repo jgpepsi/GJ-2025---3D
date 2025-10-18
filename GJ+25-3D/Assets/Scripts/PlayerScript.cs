@@ -33,7 +33,7 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer spr;
     private Rigidbody rb;
 
-    public Animator anim;
+    //public Animator anim;
 
     // =======================
     //         COMBO
@@ -213,7 +213,7 @@ public class PlayerScript : MonoBehaviour
 
     private IEnumerator DashAndHit(Transform atkPoint, Collider target)
     {
-        anim.SetTrigger("Attack");
+        //anim.SetTrigger("Attack");
         isDashing = true;
         Vector3 start = transform.position;
         Vector3 end = target.transform.position;
@@ -237,7 +237,7 @@ public class PlayerScript : MonoBehaviour
 
     private IEnumerator DashAndMiss(Transform atkPoint, bool canDebuff)
     {
-        anim.SetTrigger("Attack");
+        //anim.SetTrigger("Attack");
         isDashing = true;
         Vector3 start = transform.position;
         Vector3 dir = (atkPoint.position - transform.position).normalized;
@@ -257,12 +257,12 @@ public class PlayerScript : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         if (canDebuff) attackTimer = 0f;
         isDashing = false;
-        anim.SetTrigger("Miss");
+        //anim.SetTrigger("Miss");
     }
 
     public void ShootProjectile(bool isPiercing)
     {
-        anim.SetTrigger("Shoot");
+        //anim.SetTrigger("Shoot");
         GameObject prefab = isPiercing ? piercingProjectilePrefab : projectilePrefab;
         if (prefab == null) return;
         GameObject bullet = Instantiate(prefab, transform.position, Quaternion.identity);
