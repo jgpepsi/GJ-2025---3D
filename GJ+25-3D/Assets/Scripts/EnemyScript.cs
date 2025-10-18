@@ -1,14 +1,28 @@
+using System.Collections;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyScript : MonoBehaviour
 {
+    public int rarity;
     public int health;
     public float speed;
     public float displaceDistance;
-    public bool dodger;
+    public DodgeType dodgeType;
     public float minDist;
+    public float displaceDuration;
+    public float autoDodgeDist;
+    public Collider col;
     private bool hasDodged = false;
+    private bool isDisplacing = false;
     private PlayerScript player;
+
+    public enum DodgeType
+    {
+        noDodge,
+        dodge,
+        autododge
+    }
 
     void Start()
     {
@@ -17,7 +31,7 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) >= minDist)
+        if (Vector3.Distance(player.transform.position, transform.position) >= minDist && !isDisplacing)
         {
             if(transform.position.x > player.transform.position.x)
             {
@@ -28,14 +42,19 @@ public class EnemyScript : MonoBehaviour
                 transform.position += Vector3.right * speed * Time.deltaTime;
             }
         }
+
+        if (Vector3.Distance(player.transform.position, transform.position) <= autoDodgeDist && dodgeType == DodgeType.autododge && !hasDodged && !isDisplacing)
+        {
+            StartCoroutine(Dodge());
+        }
     }
 
     public void TakeDamage(int damage)
     {
         Debug.Log("Inimigo recebeu dano");
-        if (dodger && !hasDodged)
+        if (dodgeType == DodgeType.dodge && !hasDodged)
         {
-            Dodge();
+            StartCoroutine(Dodge());
         }
         else
         {
@@ -46,34 +65,75 @@ public class EnemyScript : MonoBehaviour
             }
             else
             {
-                ApplyKnockback();
+                StartCoroutine(ApplyKnockback());
             }
         }
     }
 
-    public void ApplyKnockback()
+    private IEnumerator ApplyKnockback()
     {
+        isDisplacing = true;
+
+        Vector3 start = transform.position;
+        Vector3 end;
+
         if (transform.position.x > player.transform.position.x)
         {
-            transform.position += Vector3.right * displaceDistance;
+            end = player.transform.position + Vector3.right * displaceDistance;
         }
         else
         {
-            transform.position += Vector3.left * displaceDistance;
+            end = player.transform.position + Vector3.left * displaceDistance;
         }
+
+        float elapsed = 0f;
+        while (elapsed < displaceDuration)
+        {
+            float t = elapsed / displaceDuration;
+            Vector3 next = Vector3.Lerp(start, end, t);
+            transform.position = next;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = end;
+
+        isDisplacing = false;
     }
 
-    public void Dodge() {;
+    private IEnumerator Dodge() 
+    {
+        isDisplacing = true;
+        col.enabled = false;
+
+        Vector3 start = transform.position;
+        Vector3 end;
 
         if (transform.position.x > player.transform.position.x)
         {
-            transform.position += Vector3.left * displaceDistance;
+            end = player.transform.position + Vector3.left * displaceDistance;
         }
         else
         {
-            transform.position += Vector3.right * displaceDistance;
+            end = player.transform.position + Vector3.right * displaceDistance;
         }
 
+        float elapsed = 0f;
+        while (elapsed < displaceDuration)
+        {
+            float t = elapsed / displaceDuration;
+            Vector3 next = Vector3.Lerp(start, end, t);
+            transform.position = next;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = end;
+
+        isDisplacing = false;
+        col.enabled = true;
+
+        hasDodged = true;
         //transform.position == player.transform.;
     }
 }

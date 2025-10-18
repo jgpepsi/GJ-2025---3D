@@ -104,8 +104,11 @@ MonoBehaviour:
   health: 1
   speed: 0.3
   displaceDistance: 0.5
-  dodger: 0
+  dodgeType: 0
   minDist: 0.2
+  displaceDuration: 0.2
+  autoDodgeDist: 0
+  col: {fileID: 5048068417645025810}
 --- !u!65 &5048068417645025810
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -101,11 +101,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ae037232c6c63448b0498e68fb4cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 2
   speed: 0.3
   displaceDistance: 0.5
-  dodger: 0
+  dodgeType: 0
   minDist: 0.2
+  displaceDuration: 0.5
+  autoDodgeDist: 0
+  col: {fileID: 5048068417645025810}
 --- !u!65 &5048068417645025810
 BoxCollider:
   m_ObjectHideFlags: 0

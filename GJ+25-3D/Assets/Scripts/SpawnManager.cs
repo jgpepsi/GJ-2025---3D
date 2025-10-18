@@ -1,21 +1,27 @@
+using NUnit.Framework;
 using System.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using System.Collections.Generic;
+
+[System.Serializable]
+public class EnemyChance
+{
+    public GameObject enemy;
+    public int chance;
+}
 
 public class SpawnManager : MonoBehaviour
 {
     public Transform spawnPosRight, spawnPosLeft;
     public GameObject enemyPrefab;
     public float spawnInterval, spawnInterval2;
+    public List<EnemyChance> chancesList = new List<EnemyChance>();
+    private int wave = 0;
 
     void Start()
     {
         StartCoroutine(SpawnNext());
-    }
-
-   
-    void Update()
-    {
-        
     }
 
     public void SpawnEnemy(bool spawnRight)

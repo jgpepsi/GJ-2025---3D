@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1750251732709778507}
   - component: {fileID: 5048068417645025810}
   m_Layer: 6
-  m_Name: Enemy_Dodger
+  m_Name: Enemy_AutoDodger
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.990566, g: 0.7833868, b: 0, a: 1}
+  m_Color: {r: 0.6133528, g: 0.69803923, b: 0.09411763, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,10 +104,10 @@ MonoBehaviour:
   health: 1
   speed: 0.3
   displaceDistance: 0.5
-  dodgeType: 1
+  dodgeType: 2
   minDist: 0.2
   displaceDuration: 0.2
-  autoDodgeDist: 0
+  autoDodgeDist: 0.7
   col: {fileID: 5048068417645025810}
 --- !u!65 &5048068417645025810
 BoxCollider:
