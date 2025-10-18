@@ -402,8 +402,8 @@ MonoBehaviour:
   spawnPosRight: {fileID: 423708329}
   spawnPosLeft: {fileID: 1610957644}
   enemyPrefab: {fileID: 2363053492163506401, guid: a87dfff2c4431514ea7cf603b1008cea, type: 3}
-  spawnInterval: 1
-  spawnInterval2: 2
+  spawnInterval: 3
+  spawnInterval2: 5
 --- !u!1 &1670815490
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,6 +672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1788872005}
   - component: {fileID: 1788872004}
+  - component: {fileID: 1788872008}
   - component: {fileID: 1788872006}
   - component: {fileID: 1788872007}
   m_Layer: 0
@@ -810,6 +811,39 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1788872008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788872003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c2b3d91bb23f043a00ed9268095f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combo:
+  - type: 0
+    cooldownMultiplier: 0.5
+    repeatCount: 2
+    label: melee
+  - type: 2
+    cooldownMultiplier: 0.5
+    repeatCount: 3
+    label: double
+  - type: 0
+    cooldownMultiplier: 0.5
+    repeatCount: 1
+    label: shoot
+  - type: 1
+    cooldownMultiplier: 0.5
+    repeatCount: 1
+    label: melee
+  leftKey: 276
+  rightKey: 275
+  currentIndex: 0
+  repeatsLeftOnCurrent: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
