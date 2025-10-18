@@ -11803,7 +11803,7 @@ MonoBehaviour:
   speed: 0.3
   displaceDistance: 0.5
   dodgeType: 0
-  minDist: 0.2
+  minDist: 0.01
   displaceDuration: 0.5
   autoDodgeDist: 0
   col: {fileID: 5048068417645025810}
