@@ -825,23 +825,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combo:
   - type: 0
-    cooldownMultiplier: 0.5
-    repeatCount: 2
+    cooldownMultiplier: 1
+    repeatCount: 1
     label: melee
   - type: 2
-    cooldownMultiplier: 0.5
-    repeatCount: 3
-    label: double
-  - type: 0
-    cooldownMultiplier: 0.5
-    repeatCount: 1
-    label: shoot
-  - type: 1
-    cooldownMultiplier: 0.5
-    repeatCount: 1
-    label: melee
+    cooldownMultiplier: 1
+    repeatCount: 2
+    label: shot
+  handleInput: 1
   leftKey: 276
   rightKey: 275
+  useComboCooldownMultipliers: 1
+  verboseLogs: 1
   currentIndex: 0
   repeatsLeftOnCurrent: 0
 --- !u!1660057539 &9223372036854775807

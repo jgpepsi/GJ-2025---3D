@@ -12,20 +12,17 @@ public class ComboManager : MonoBehaviour
         DoubleMelee,        // PlayerScript.DoubleAttack
         Shoot,              // PlayerScript.ShootProjectile(false)
         ShootPiercing,      // PlayerScript.ShootProjectile(true)
-        NoDebuffDash        // Executa NoDebuffAttack (sem penalidade)
+        NoDebuffDash        // PlayerScript.NoDebuffAttack (sem penalidade)
     }
 
     [Serializable]
     public class AttackStep
     {
         public AttackType type = AttackType.Melee;
-
         [Tooltip("Multiplica o cooldown base do Player (1 = sem alteração).")]
         public float cooldownMultiplier = 1f;
-
         [Tooltip("Repetições desta etapa antes de avançar para a próxima.")]
         public int repeatCount = 1;
-
         [Tooltip("Rótulo opcional para depuração/UI.")]
         public string label = "";
     }
@@ -34,10 +31,15 @@ public class ComboManager : MonoBehaviour
     [SerializeField] private List<AttackStep> combo = new List<AttackStep>();
 
     [Header("Input")]
+    [SerializeField] private bool handleInput = true; // <- controla se este script lê teclas
     [SerializeField] private KeyCode leftKey = KeyCode.LeftArrow;
     [SerializeField] private KeyCode rightKey = KeyCode.RightArrow;
 
+    [Header("Cooldown")]
+    [SerializeField] private bool useComboCooldownMultipliers = false;
+
     [Header("Debug")]
+    [SerializeField] private bool verboseLogs = false;
     [SerializeField] private int currentIndex = 0;
     [SerializeField] private int repeatsLeftOnCurrent = 0;
 
@@ -45,6 +47,7 @@ public class ComboManager : MonoBehaviour
 
     private PlayerScript player;
     private Transform leftPoint, rightPoint;
+    private SpriteRenderer spr;
     private float basePlayerCooldown;
 
     private void Awake()
@@ -52,13 +55,17 @@ public class ComboManager : MonoBehaviour
         player = GetComponent<PlayerScript>();
         if (player == null)
         {
-            Debug.LogError("[ComboManager] PlayerScript não encontrado no mesmo GameObject.");
+            Debug.LogError("[ComboManager] PlayerScript não encontrado no mesmo GameObject!");
+            enabled = false;
+            return;
         }
+
+        spr = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
-        // cria combo padrão caso a lista esteja vazia
+        // cria combo padrão se a lista estiver vazia
         if (combo == null || combo.Count == 0)
         {
             combo = new List<AttackStep>
@@ -74,35 +81,51 @@ public class ComboManager : MonoBehaviour
         leftPoint = player.leftAtkPoint;
         rightPoint = player.rightAtkPoint;
 
-        currentIndex = Mathf.Clamp(currentIndex, 0, combo.Count - 1);
-        repeatsLeftOnCurrent = GetRepeatForCurrent();
+        if (leftPoint == null || rightPoint == null)
+        {
+            Debug.LogError("[ComboManager] leftAtkPoint/rightAtkPoint não atribuídos no PlayerScript!");
+            enabled = false;
+            return;
+        }
 
         basePlayerCooldown = player.attackCooldown;
+        currentIndex = 0;
+        repeatsLeftOnCurrent = GetRepeatForCurrent();
     }
 
     private void Update()
     {
-        if (player == null) return;
-        if (player.isDashing) return;
+        if (!handleInput) return; // outro script pode acionar manualmente
 
-        // respeita cooldown global
-        if (player.attackTimer < player.attackCooldown) return;
+        if (Input.GetKeyDown(leftKey)) TriggerLeft();
+        if (Input.GetKeyDown(rightKey)) TriggerRight();
+    }
 
-        bool leftPressed = Input.GetKeyDown(leftKey);
-        bool rightPressed = Input.GetKeyDown(rightKey);
-        if (!leftPressed && !rightPressed) return;
+    // --- Métodos públicos caso queira acionar de outro script ---
+    public void TriggerLeft() => TryPerformStep(leftPoint);
+    public void TriggerRight() => TryPerformStep(rightPoint);
 
-        Transform atkPoint = leftPressed ? leftPoint : rightPoint;
+    // --- Controle principal do combo ---
+    private void TryPerformStep(Transform atkPoint)
+    {
+        if (player == null || !isActiveAndEnabled) return;
+        if (player.isDashing) return; // não ataca durante dash
+        if (player.attackTimer < player.attackCooldown) return; // respeita cooldown
 
         var step = combo[currentIndex];
+
+        // Atualiza a orientação visual antes do ataque
+        if (spr != null)
+            spr.flipX = (atkPoint == player.leftAtkPoint);
+
         bool executed = ExecuteStep(step, atkPoint);
         if (!executed) return;
 
-        // reseta o timer do Player
+        // reseta cooldown do player
         player.attackTimer = 0f;
 
-        // aplica multiplicador de cooldown (temporário)
-        if (Mathf.Abs(step.cooldownMultiplier - 1f) > 0.001f)
+        // aplica multiplicador de cooldown se habilitado
+        if (useComboCooldownMultipliers && Mathf.Abs(step.cooldownMultiplier - 1f) > 0.001f)
         {
             player.attackCooldown = basePlayerCooldown * step.cooldownMultiplier;
             StartCoroutine(RestoreCooldownNextFrame());
@@ -111,9 +134,10 @@ public class ComboManager : MonoBehaviour
         // consome repetição e avança combo
         repeatsLeftOnCurrent--;
         if (repeatsLeftOnCurrent <= 0)
-        {
             AdvanceComboIndex();
-        }
+
+        if (verboseLogs)
+            Debug.Log($"[Combo] Step {currentIndex} -> {step.type} ({step.label}) x{repeatsLeftOnCurrent}");
     }
 
     private IEnumerator RestoreCooldownNextFrame()
@@ -125,8 +149,7 @@ public class ComboManager : MonoBehaviour
     private int GetRepeatForCurrent()
     {
         if (combo == null || combo.Count == 0) return 1;
-        int r = combo[currentIndex].repeatCount;
-        return Mathf.Max(1, r);
+        return Mathf.Max(1, combo[currentIndex].repeatCount);
     }
 
     private void AdvanceComboIndex()
@@ -135,22 +158,17 @@ public class ComboManager : MonoBehaviour
         repeatsLeftOnCurrent = GetRepeatForCurrent();
         OnComboAdvanced?.Invoke(currentIndex, combo[currentIndex]);
 
-#if UNITY_EDITOR
-        var step = combo[currentIndex];
-        Debug.Log($"[Combo] Avançou para {currentIndex} ({step.label} | {step.type}) x{repeatsLeftOnCurrent}");
-#endif
+        if (verboseLogs)
+        {
+            var step = combo[currentIndex];
+            Debug.Log($"[Combo] Avançou para {currentIndex} ({step.label} | {step.type}) x{repeatsLeftOnCurrent}");
+        }
     }
 
-    // --- EXECUÇÃO DE ATAQUES ---
+    // --- Executa cada tipo de ataque ---
     private bool ExecuteStep(AttackStep step, Transform atkPoint)
     {
         if (step == null) return false;
-
-        // ✅ Atualiza a direção visual antes do ataque
-        // Se o ponto for o esquerdo, flipX = true → mira pra esquerda
-        SpriteRenderer spr = player.GetComponent<SpriteRenderer>();
-        if (spr != null)
-            spr.flipX = (atkPoint == player.leftAtkPoint);
 
         switch (step.type)
         {
@@ -171,7 +189,7 @@ public class ComboManager : MonoBehaviour
                 return true;
 
             case AttackType.NoDebuffDash:
-                StartCoroutine(RunNoDebuff(atkPoint));
+                StartCoroutine(RunNoDebuff(atkPoint)); // NoDebuffAttack é void
                 return true;
 
             default:
@@ -179,13 +197,12 @@ public class ComboManager : MonoBehaviour
         }
     }
 
-    // --- WRAPPER PARA NoDebuffAttack QUE É void ---
+    // --- Wrapper para NoDebuffAttack (void no PlayerScript) ---
     private IEnumerator RunNoDebuff(Transform atkPoint)
     {
         player.NoDebuffAttack(atkPoint);
 
-        // Aguarda o dash terminar observando a flag isDashing
-        float safety = 5f; // failsafe para evitar travas
+        float safety = 5f;
         while (player.isDashing && safety > 0f)
         {
             safety -= Time.deltaTime;
@@ -193,7 +210,7 @@ public class ComboManager : MonoBehaviour
         }
     }
 
-    // --- MÉTODOS PÚBLICOS DE EXTENSÃO ---
+    // --- Métodos auxiliares (adicionar ataques dinamicamente) ---
     public void AppendStep(AttackStep step)
     {
         if (step == null) return;
