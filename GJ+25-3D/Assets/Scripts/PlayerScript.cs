@@ -5,6 +5,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class PlayerScript : MonoBehaviour
 {
+    public static PlayerScript Instance { get; private set; }
+
     [Header("Vida / Status")]
     public int health = 3;
 
@@ -55,11 +57,14 @@ public class PlayerScript : MonoBehaviour
     public List<AttackStep> comboSteps = new List<AttackStep>()
     {
         new AttackStep(){ type = AttackType.Melee, cooldownMultiplier = 1f },
-        new AttackStep(){ type = AttackType.DoubleMelee, cooldownMultiplier = 1.1f },
-        new AttackStep(){ type = AttackType.Shoot, cooldownMultiplier = 1f }
     };
 
     private int currentComboIndex = 0;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -68,6 +73,7 @@ public class PlayerScript : MonoBehaviour
         isDashing = false;
         attackTimer = attackCooldown;
     }
+
 
     void Update()
     {
@@ -264,5 +270,59 @@ public class PlayerScript : MonoBehaviour
         Gizmos.color = Color.red;
         if (leftAtkPoint != null) Gizmos.DrawWireSphere(leftAtkPoint.position, atkRange);
         if (rightAtkPoint != null) Gizmos.DrawWireSphere(rightAtkPoint.position, atkRange);
+    }
+
+    public void InsertAttackType(int type)
+    {
+        switch (type)
+        {
+            case 1:
+                {
+                    var attackType = new AttackStep() { type = AttackType.Melee, cooldownMultiplier = 1f };
+
+                    comboSteps.Add(attackType);
+
+                    break;
+                }
+
+            case 2:
+                {
+                    var attackType = new AttackStep() { type = AttackType.DoubleMelee, cooldownMultiplier = 1f };
+        
+
+                    comboSteps.Add(attackType);
+
+                    break;
+                }
+
+            case 3:
+                {
+                    var attackType = new AttackStep() { type = AttackType.Shoot, cooldownMultiplier = 1f };
+
+                    comboSteps.Add(attackType);
+
+                    break;
+                }
+
+            case 4:
+                {
+                    var attackType = new AttackStep() { type = AttackType.ShootPiercing, cooldownMultiplier = 1f };
+
+                    comboSteps.Add(attackType);
+
+                    break;
+                }
+
+            case 5:
+                {
+                    var attackType = new AttackStep() { type = AttackType.NoDebuffDash, cooldownMultiplier = 1f };
+
+                    comboSteps.Add(attackType);
+
+                    break;
+                }
+
+            default: break;
+        }
     }
 }
