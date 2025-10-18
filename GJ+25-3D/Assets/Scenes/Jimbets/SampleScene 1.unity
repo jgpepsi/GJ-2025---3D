@@ -402,8 +402,8 @@ MonoBehaviour:
   spawnPosRight: {fileID: 423708329}
   spawnPosLeft: {fileID: 1610957644}
   enemyPrefab: {fileID: 2363053492163506401, guid: 4253f1d19adb32b4482d27d8fa6eed8d, type: 3}
-  spawnInterval: 1
-  spawnInterval2: 2
+  spawnInterval: 2.5
+  minSpawnInterval: 0.2
   chancesList:
   - enemy: {fileID: 2363053492163506401, guid: a87dfff2c4431514ea7cf603b1008cea, type: 3}
     chance: 10
@@ -413,6 +413,10 @@ MonoBehaviour:
     chance: 0
   - enemy: {fileID: 2363053492163506401, guid: 4253f1d19adb32b4482d27d8fa6eed8d, type: 3}
     chance: 0
+  wave: 0
+  waveProgress: 0
+  waveGoal: 0
+  chanceSum: 0
 --- !u!1 &1670815490
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +782,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  attackCooldown: 2
+  speed: 0.1
+  isDashing: 0
+  dashDuration: 0.1
+  attackCooldown: 0.2
   attackTimer: 0
   leftAtkPoint: {fileID: 422908265}
   rightAtkPoint: {fileID: 393327046}
@@ -786,12 +793,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   atkRange: 0.2
-  speed: 0.1
-  isDashing: 0
-  dashDuration: 0.1
   projectilePrefab: {fileID: 623720071277163541, guid: c5e7b10ac606fbb4aa326df3cbb8940c, type: 3}
   piercingProjectilePrefab: {fileID: 623720071277163541, guid: c5831dad02606e54996035e0819f9b9d, type: 3}
   shotSpeed: 0.5
+  comboSteps:
+  - type: 0
+    cooldownMultiplier: 1
+  - type: 1
+    cooldownMultiplier: 1.1
+  - type: 2
+    cooldownMultiplier: 1
 --- !u!54 &1788872007
 Rigidbody:
   m_ObjectHideFlags: 0

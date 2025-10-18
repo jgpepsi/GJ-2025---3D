@@ -13,6 +13,7 @@ public class EnemyScript : MonoBehaviour
     public float displaceDuration;
     public float autoDodgeDist;
     public Collider col;
+    public SpawnManager spawnManager;
     private bool hasDodged = false;
     private bool isDisplacing = false;
     private PlayerScript player;
@@ -61,6 +62,7 @@ public class EnemyScript : MonoBehaviour
             health -= damage;
             if (health <= 0)
             {
+                spawnManager.AddWaveProgress(rarity);
                 Destroy(gameObject);
             }
             else

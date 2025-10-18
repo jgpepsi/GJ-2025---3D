@@ -19,11 +19,15 @@ public class SpawnManager : MonoBehaviour
     public float spawnInterval;
     public float minSpawnInterval;
     public List<EnemyChance> chancesList = new List<EnemyChance>();
-    
-    private int wave = 0;
-    private int waveProgress;
-    private int waveGoal;
 
+    [SerializeField]
+    private int wave = 0;
+    [SerializeField]
+    private int waveProgress;
+    [SerializeField]
+    private int waveGoal = 10;
+
+    [SerializeField]
     private int chanceSum;
 
     void Start()
@@ -35,11 +39,13 @@ public class SpawnManager : MonoBehaviour
     {
         if (Random.Range(0,2) > 0)
         {
-            Instantiate(GetRandomEnemy(), spawnPosRight.position, Quaternion.identity);
+            var enemy = Instantiate(GetRandomEnemy(), spawnPosRight.position, Quaternion.identity);
+            enemy.GetComponent<EnemyScript>().spawnManager = this;
         }
         else
         {
-            Instantiate(GetRandomEnemy(), spawnPosLeft.position, Quaternion.identity);
+            var enemy = Instantiate(GetRandomEnemy(), spawnPosLeft.position, Quaternion.identity);
+            enemy.GetComponent<EnemyScript>().spawnManager = this;
         }
     }
 
@@ -67,9 +73,11 @@ public class SpawnManager : MonoBehaviour
     public void NextWave()
     {
         wave++;
+        waveGoal += 3;
+        waveProgress = 0;
         if (spawnInterval >= minSpawnInterval)
         {
-            spawnInterval--;
+            spawnInterval -= .1f;
         }
         
         chanceSum = 0;
@@ -79,6 +87,15 @@ public class SpawnManager : MonoBehaviour
             chanceSum += chance.chance;
         }
 
-        chancesList[Random.Range(1, 3)].chance++;
+        chancesList[Random.Range(1, 4)].chance++;
+    }
+
+    public void AddWaveProgress(int amount)
+    {
+        waveProgress += amount;
+        if(waveProgress >= waveGoal)
+        {
+            NextWave();
+        }
     }
 }
