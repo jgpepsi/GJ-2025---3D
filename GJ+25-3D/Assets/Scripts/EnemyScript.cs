@@ -14,6 +14,7 @@ public class EnemyScript : MonoBehaviour
     public float autoDodgeDist;
     public Collider col;
     public SpawnManager spawnManager;
+    public GameObject inRangeGraphics;
     private bool hasDodged = false;
     private bool isDisplacing = false;
     private PlayerScript player;
