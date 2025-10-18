@@ -44,6 +44,10 @@ public class PlayerScript : MonoBehaviour
             Attack(rightAtkPoint);
             FlipX(horizontal);
         }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            DoubleAttack(rightAtkPoint);
+        }
         
     }
 
@@ -82,61 +86,68 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            StartCoroutine(DashAndMiss(atkPoint));
+            StartCoroutine(DashAndMiss(atkPoint, true));
         }
 
     }
 
-    public void IncreaseRange(float number)
-    {
-        atkRange += number;
-        leftAtkPoint.transform.position -= new Vector3(number, 0f, 0f);
-        rightAtkPoint.transform.position += new Vector3(number, 0f, 0f);
-    }
-
-    public void DecreaseRange(float number)
-    {
-        atkRange -= number;
-        leftAtkPoint.transform.position += new Vector3(number, 0f, 0f);
-        rightAtkPoint.transform.position -= new Vector3(number, 0f, 0f);
-    }
 
     public void DoubleAttack(Transform atkPoint)
     {
+        StartCoroutine(DoubleDashSequence(atkPoint));
+    }
+
+    private IEnumerator DoubleDashSequence(Transform atkPoint)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            Collider[] hits = Physics.OverlapSphere(atkPoint.position, atkRange, enemyLayer);
+
+            if (hits.Length > 0)
+            {
+                Transform closestHit = hits[0].transform;
+                Collider actualTarget = hits[0];
+                foreach (Collider hit in hits)
+                {
+                    if (Vector3.Distance(hit.transform.position, transform.position) < Vector3.Distance(closestHit.position, transform.position))
+                    {
+                        closestHit = hit.transform;
+                        actualTarget = hit;
+                    }
+                }
+                yield return StartCoroutine(DashAndHit(atkPoint, actualTarget));
+            }
+            else
+            {
+                yield return StartCoroutine(DashAndMiss(atkPoint, false));
+            }
+
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    public void NoDebuffAttack(Transform atkPoint)
+    {
         Collider[] hits = Physics.OverlapSphere(atkPoint.position, atkRange, enemyLayer);
+
+
         if (hits.Length > 0)
         {
-            StartCoroutine(DoubleDashAndHit(atkPoint, hits));
+            Transform closestHit = hits[0].transform;
+            Collider actualTarget = hits[0];
+            foreach (Collider hit in hits)
+            {
+                if (Vector3.Distance(hit.transform.position, transform.position) < Vector3.Distance(closestHit.position, transform.position))
+                {
+                    actualTarget = hit;
+                }
+            }
+            StartCoroutine(DashAndHit(atkPoint, actualTarget));
         }
         else
         {
-            StartCoroutine(DoubleDashAndMiss(atkPoint));
+            StartCoroutine(DashAndMiss(atkPoint, false));
         }
-        
-    }
-
-    public IEnumerator NoDebuffAttack(Transform atkPoint)
-    {
-        isDashing = true;
-
-        Vector3 start = transform.position;
-        Vector3 dir = (atkPoint.position - transform.position).normalized;
-        Vector3 end = transform.position + dir * atkRange;
-
-        float elapsed = 0f;
-        while (elapsed < dashDuration)
-        {
-            float t = elapsed / dashDuration;
-            Vector3 next = Vector3.Lerp(start, end, t);
-            rb.MovePosition(next);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        rb.MovePosition(end);
-        rb.linearVelocity = Vector3.zero;
-
-        isDashing = false;
     }
 
     private IEnumerator DashAndHit(Transform atkPoint, Collider target)
@@ -164,7 +175,7 @@ public class PlayerScript : MonoBehaviour
         isDashing = false;
     }
 
-    private IEnumerator DashAndMiss(Transform atkPoint)
+    private IEnumerator DashAndMiss(Transform atkPoint, bool canDebuff)
     {
         isDashing = true;
 
@@ -185,7 +196,11 @@ public class PlayerScript : MonoBehaviour
         rb.MovePosition(end);
         rb.linearVelocity = Vector3.zero;
 
-        attackTimer = 0f;
+        if (canDebuff)
+        {
+            attackTimer = 0f;
+
+        }
 
         isDashing = false;
     }
@@ -194,20 +209,15 @@ public class PlayerScript : MonoBehaviour
     {
         isDashing = true;
 
-        int counter = 0;
         Transform closestHit = hits[0].transform;
         foreach (Collider hit in hits)
         {
-            var enemy = hit.GetComponent<EnemyScript>();
-            if (enemy != null) enemy.TakeDamage(1);
 
             if (Vector3.Distance(hit.transform.position, transform.position) < Vector3.Distance(closestHit.position, transform.position))
             {
                 closestHit = hit.transform;
             }
-
-            counter++;
-            if (counter >= 2) break;
+            
         }
 
         Vector3 start = transform.position;
@@ -225,13 +235,15 @@ public class PlayerScript : MonoBehaviour
         rb.MovePosition(end);
         rb.linearVelocity = Vector3.zero;
         isDashing = false;
+        yield return new WaitForSeconds(0.1f);
+        NoDebuffAttack(atkPoint);
     }
 
     public IEnumerator DoubleDashAndMiss(Transform atkPoint)
     {
-        StartCoroutine(DashAndMiss(atkPoint));
+        StartCoroutine(DashAndMiss(atkPoint, true));
         yield return new WaitForSeconds(dashDuration + 0.1f);
-        StartCoroutine(DashAndMiss(atkPoint));
+        StartCoroutine(DashAndMiss(atkPoint, true));
     }
 
     public void ShootProjectile(bool isPiercing)
