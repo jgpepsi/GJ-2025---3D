@@ -23,4 +23,14 @@ public class EnemyScript : MonoBehaviour
             transform.position += Vector3.right * speed * Time.deltaTime;
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("Inimigo recebeu dano");
+        health -= damage;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
