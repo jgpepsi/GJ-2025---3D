@@ -83,9 +83,9 @@ public class PlayerScript : MonoBehaviour
 
         attackTimer += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && attackTimer >= attackCooldown)
             TryExecuteCombo(leftAtkPoint, isRightSide: false);
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && attackTimer >= attackCooldown)
             TryExecuteCombo(rightAtkPoint, isRightSide: true);
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -338,6 +338,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && !isDashing)
         {
             TakeDamage(1);
+            Destroy(collision.gameObject);
         }
     }
 
