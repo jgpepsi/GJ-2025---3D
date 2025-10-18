@@ -135,7 +135,7 @@ public class PlayerScript : MonoBehaviour
         if (currentComboIndex >= comboSteps.Count)
             currentComboIndex = 0;
 
-        attackTimer = 0f;
+        
     }
 
     private void ExecuteAttackType(AttackType type, Transform atkPoint)
