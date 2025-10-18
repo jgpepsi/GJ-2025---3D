@@ -788,6 +788,10 @@ MonoBehaviour:
     cooldownMultiplier: 1
   - type: 2
     cooldownMultiplier: 1
+  - type: 0
+    cooldownMultiplier: 1
+  - type: 2
+    cooldownMultiplier: 1
   - type: 2
     cooldownMultiplier: 1
 --- !u!54 &1788872007
