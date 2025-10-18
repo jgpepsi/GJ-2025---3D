@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1750251732709778507}
   - component: {fileID: 5048068417645025810}
   m_Layer: 6
-  m_Name: Enemy_Normal
+  m_Name: Enemy_Tank
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.9622642, g: 0.07807041, b: 0.07807041, a: 1}
+  m_Color: {r: 0.4528302, g: 0.15564997, b: 0.1003916, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ae037232c6c63448b0498e68fb4cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 50
   speed: 0.3
   displaceDistance: 0.5
   dodger: 0

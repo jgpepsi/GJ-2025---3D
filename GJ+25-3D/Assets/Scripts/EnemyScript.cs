@@ -4,6 +4,10 @@ public class EnemyScript : MonoBehaviour
 {
     public int health;
     public float speed;
+    public float displaceDistance;
+    public bool dodger;
+    public float minDist;
+    private bool hasDodged = false;
     private PlayerScript player;
 
     void Start()
@@ -11,26 +15,65 @@ public class EnemyScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(transform.position.x > player.transform.position.x)
+        if (Vector3.Distance(player.transform.position, transform.position) >= minDist)
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
-        }
-        else if(transform.position.x < player.transform.position.x)
-        {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            if(transform.position.x > player.transform.position.x)
+            {
+                transform.position += Vector3.left * speed * Time.deltaTime;
+            }
+            else if(transform.position.x < player.transform.position.x)
+            {
+                transform.position += Vector3.right * speed * Time.deltaTime;
+            }
         }
     }
 
     public void TakeDamage(int damage)
     {
         Debug.Log("Inimigo recebeu dano");
-        health -= damage;
-        if(health <= 0)
+        if (dodger && !hasDodged)
         {
-            Destroy(gameObject);
+            Dodge();
         }
+        else
+        {
+            health -= damage;
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                ApplyKnockback();
+            }
+        }
+    }
+
+    public void ApplyKnockback()
+    {
+        if (transform.position.x > player.transform.position.x)
+        {
+            transform.position += Vector3.right * displaceDistance;
+        }
+        else
+        {
+            transform.position += Vector3.left * displaceDistance;
+        }
+    }
+
+    public void Dodge() {;
+
+        if (transform.position.x > player.transform.position.x)
+        {
+            transform.position += Vector3.left * displaceDistance;
+        }
+        else
+        {
+            transform.position += Vector3.right * displaceDistance;
+        }
+
+        //transform.position == player.transform.;
     }
 }

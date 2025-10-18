@@ -401,7 +401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosRight: {fileID: 423708329}
   spawnPosLeft: {fileID: 1610957644}
-  enemyPrefab: {fileID: 2363053492163506401, guid: a87dfff2c4431514ea7cf603b1008cea, type: 3}
+  enemyPrefab: {fileID: 2363053492163506401, guid: 3990345514efb6f4da615cbfb44be857, type: 3}
   spawnInterval: 1
   spawnInterval2: 2
 --- !u!1 &1670815490
