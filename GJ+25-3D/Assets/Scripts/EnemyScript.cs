@@ -136,4 +136,12 @@ public class EnemyScript : MonoBehaviour
         hasDodged = true;
         //transform.position == player.transform.;
     }
+
+    public IEnumerator Paralyze(float duration)
+    {
+        float originalSpeed = speed;
+        speed = 0;
+        yield return new WaitForSeconds(duration);
+        speed = originalSpeed;
+    }
 }
