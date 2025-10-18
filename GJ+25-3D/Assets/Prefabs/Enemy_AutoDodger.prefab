@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rarity: 4
   health: 1
-  speed: 0.3
+  speed: 1
   displaceDistance: 0.5
   dodgeType: 2
   minDist: 0.2
@@ -111,6 +111,7 @@ MonoBehaviour:
   autoDodgeDist: 0.7
   col: {fileID: 5048068417645025810}
   spawnManager: {fileID: 0}
+  inRangeGraphics: {fileID: 0}
 --- !u!65 &5048068417645025810
 BoxCollider:
   m_ObjectHideFlags: 0
