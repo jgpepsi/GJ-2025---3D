@@ -2347,8 +2347,8 @@ Transform:
   m_GameObject: {fileID: 600899941}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00004327297, y: 0.7069361, z: -0.7072774, w: -0.000043131407}
-  m_LocalPosition: {x: 5.1960683, y: 204, z: 842}
-  m_LocalScale: {x: 378.28778, y: 378.28778, z: 378.28778}
+  m_LocalPosition: {x: 5.1960683, y: 748, z: 1285}
+  m_LocalScale: {x: 795.577, y: 795.577, z: 795.577}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -6740,15 +6740,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f48d2781c2963b642a6f5671e84eaecf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 294.22028
+      value: 179.25813
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f48d2781c2963b642a6f5671e84eaecf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 294.22028
+      value: 179.25813
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f48d2781c2963b642a6f5671e84eaecf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 294.22028
+      value: 179.25813
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f48d2781c2963b642a6f5671e84eaecf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6756,11 +6756,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f48d2781c2963b642a6f5671e84eaecf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 640
+      value: 784
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f48d2781c2963b642a6f5671e84eaecf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1246
+      value: 1141
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f48d2781c2963b642a6f5671e84eaecf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6862,7 +6862,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1386.71
+  far clip plane: 1325.2
   field of view: 90
   orthographic: 0
   orthographic size: 5
