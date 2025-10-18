@@ -19,11 +19,13 @@ public class PlayerScript : MonoBehaviour
     public float dashDuration;
     public GameObject projectilePrefab, piercingProjectilePrefab;
     public float shotSpeed;
+    public bool extraRangeActive;
     void Start()
     {
         spr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody>();
         isDashing = false;
+        extraRangeActive = false;
         attackTimer = 0f;
     }
 
@@ -44,9 +46,9 @@ public class PlayerScript : MonoBehaviour
             Attack(rightAtkPoint);
             FlipX(horizontal);
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && attackTimer >= attackCooldown)
         {
-            DoubleAttack(rightAtkPoint);
+            Howl(10f, 2f);
         }
         
     }
@@ -258,7 +260,60 @@ public class PlayerScript : MonoBehaviour
             rb.linearVelocity = direction * shotSpeed;
         }
     }
-    
+
+    public void LongAttack(Transform atkPoint, float extraRange)
+    {
+        StartCoroutine(LongAttackDash(atkPoint, extraRange));
+    }
+
+    private IEnumerator LongAttackDash(Transform atkPoint, float extraRange)
+    {
+        float originalRange = atkRange;
+        atkRange += extraRange;
+
+        Collider[] hits = Physics.OverlapSphere(atkPoint.position, atkRange, enemyLayer);
+
+        if (hits.Length > 0)
+        {
+            Transform closestHit = hits[0].transform;
+            Collider actualTarget = hits[0];
+            foreach (Collider hit in hits)
+            {
+                if (Vector3.Distance(hit.transform.position, transform.position) < Vector3.Distance(closestHit.position, transform.position))
+                {
+                    closestHit = hit.transform;
+                    actualTarget = hit;
+                }
+            }
+            yield return StartCoroutine(DashAndHit(atkPoint, actualTarget));
+        }
+        else
+        {
+            yield return StartCoroutine(DashAndMiss(atkPoint, true));
+        }
+
+        atkRange = originalRange;
+    }
+
+    public void Howl(float range, float duration)
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, range, enemyLayer);
+
+        foreach (Collider hit in hits)
+        {
+            bool isRight = !spr.flipX;
+            bool enemyIsRight = hit.transform.position.x > transform.position.x;
+
+            if ((isRight && enemyIsRight) || (!isRight && !enemyIsRight))
+            {
+                EnemyScript enemy = hit.GetComponent<EnemyScript>();
+                if (enemy != null)
+                {
+                    enemy.StartCoroutine(enemy.Paralyze(duration));
+                }
+            }
+        }
+    }
 
 
     public void TakeDamage(int damage)

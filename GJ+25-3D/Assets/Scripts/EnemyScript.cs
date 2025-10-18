@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -32,5 +33,13 @@ public class EnemyScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public IEnumerator Paralyze(float duration)
+    {
+        float originalSpeed = speed;
+        speed = 0;
+        yield return new WaitForSeconds(duration);
+        speed = originalSpeed;
     }
 }
