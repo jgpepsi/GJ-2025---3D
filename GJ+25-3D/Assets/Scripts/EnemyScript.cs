@@ -49,6 +49,15 @@ public class EnemyScript : MonoBehaviour
         {
             StartCoroutine(Dodge());
         }
+
+        if (Vector3.Distance(player.transform.position, transform.position) <= player.atkRange && !inRangeGraphics.activeSelf)
+        {
+            inRangeGraphics.SetActive(true);
+        }
+        else if(Vector3.Distance(player.transform.position, transform.position) > player.atkRange && inRangeGraphics.activeSelf)
+        {
+            inRangeGraphics.SetActive(true);
+        }
     }
 
     public void TakeDamage(int damage)
