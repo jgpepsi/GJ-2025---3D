@@ -21989,11 +21989,15 @@ PrefabInstance:
     - target: {fileID: 83739138931135316, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2113322280, guid: 43f2e70115bd4db41a2beff3139e885b, type: 3}
+      objectReference: {fileID: -1518452069, guid: d0526d2d5ac1efc4cbfee7b8268b39e4, type: 3}
     - target: {fileID: 83739138931135316, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e1c45569997c772499e5d8f3594b80b3, type: 2}
+    - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
     - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: hudController
       value: 
@@ -22054,17 +22058,29 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.06
       objectReference: {fileID: 0}
+    - target: {fileID: 5039301347256113816, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.58
+      objectReference: {fileID: 0}
     - target: {fileID: 5613707916397537038, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: targetImage
       value: 
       objectReference: {fileID: 951099266}
+    - target: {fileID: 6292947586030643629, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292947586030643629, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6292947586030643629, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.98
       objectReference: {fileID: 0}
     - target: {fileID: 6292947586030643629, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.36
+      value: -1.19
       objectReference: {fileID: 0}
     - target: {fileID: 6292947586030643629, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_LocalPosition.z
