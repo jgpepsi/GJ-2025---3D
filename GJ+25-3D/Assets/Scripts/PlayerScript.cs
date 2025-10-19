@@ -44,6 +44,8 @@ public class PlayerScript : MonoBehaviour
 
     public Animator anim;
 
+    public GameOverUI gameOverUI;
+
     // =======================
     //         COMBO
     // =======================
@@ -401,7 +403,7 @@ public class PlayerScript : MonoBehaviour
         Debug.Log("Player took damage!");
         FreezeAllEnemies(0.25f);
         ScreenShake.Instance.Shake(0.1f, 0.02f);
-        if (health <= 0) Destroy(gameObject); //ao invés disso, volta pro main menu
+        if (health <= 0) gameOverUI.ShowGameOver(); ; //ao invés disso, volta pro main menu
     }
 
     public IEnumerator IFrames()
