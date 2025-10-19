@@ -31,6 +31,8 @@ public class PlayerScript : MonoBehaviour
     public GameObject piercingProjectilePrefab;
     public float shotSpeed = 12f;
 
+    [SerializeField] private HUDController hudController;
+
     public bool isShielded;
     public bool hasDeadlyAttack;
     public int nCounter = 0;
@@ -395,6 +397,7 @@ public class PlayerScript : MonoBehaviour
     {
         AudioManager.instance.PlaySFX("LoboApanha");
         health -= damage;
+        LoseLife();
         Debug.Log("Player took damage!");
         FreezeAllEnemies(0.25f);
         ScreenShake.Instance.Shake(0.1f, 0.02f);
@@ -496,5 +499,15 @@ public class PlayerScript : MonoBehaviour
     {
         hasDeadlyAttack = true;
         nCounter = 0;
+    }
+
+    public void AddScoreHUD()
+    {
+        hudController.AddScore();
+    }
+
+    public void LoseLife()
+    {
+        hudController.TakeDamage();
     }
 }

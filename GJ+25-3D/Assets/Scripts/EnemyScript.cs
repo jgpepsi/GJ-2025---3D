@@ -19,6 +19,8 @@ public class EnemyScript : MonoBehaviour
     private PlayerScript player;
     private Rigidbody rb;
 
+    public HUDController hudController;
+
     public enum DodgeType
     {
         noDodge,
@@ -66,6 +68,7 @@ public class EnemyScript : MonoBehaviour
             if (health <= 0)
             {
                 spawnManager.AddWaveProgress(rarity);
+                hudController.AddScore();
                 Destroy(gameObject);
             }
             else
