@@ -7412,6 +7412,13 @@ MonoBehaviour:
   - {fileID: 7076594683952491103, guid: 7bd859b79c616ea4f8601ec44a7ca60b, type: 3}
   - {fileID: 7076594683952491103, guid: 7bd859b79c616ea4f8601ec44a7ca60b, type: 3}
   - {fileID: 7076594683952491103, guid: 7bd859b79c616ea4f8601ec44a7ca60b, type: 3}
+  presetsCartas:
+  - cardList:
+    - {fileID: 0}
+    - {fileID: 0}
+  - cardList:
+    - {fileID: 0}
+    - {fileID: 0}
   cardContainer: {fileID: 1700422385}
 --- !u!1001 &1623168639
 PrefabInstance:

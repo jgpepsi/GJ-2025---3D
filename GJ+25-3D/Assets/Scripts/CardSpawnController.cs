@@ -2,9 +2,16 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
+[System.Serializable]
+public class ListaDeCartas
+{
+    public List<GameObject> cardList = new List<GameObject>();
+}
+
 public class CardSpawnController : MonoBehaviour
 {
     public List<GameObject> listaCartas;
+    public List<ListaDeCartas> presetsCartas;
     public static CardSpawnController Instance { get; private set; }
   
     public GameObject cardContainer;
@@ -29,7 +36,7 @@ public class CardSpawnController : MonoBehaviour
         {
             Instantiate(listaCartas[i], cardContainer.transform);
         }
-        Time.timeScale = 0f;
+        Time.timeScale = .15f;
     }
 
     public void CloseCardSpawner()
