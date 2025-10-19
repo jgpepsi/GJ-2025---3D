@@ -227,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1894659527050121479, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1894659527050121479, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_LocalPosition.y
@@ -243,7 +243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4640075982017107047, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4640075982017107047, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_LocalPosition.y
@@ -306,8 +306,16 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7075274292753198801, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
+      propertyPath: atkRange
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075274292753198801, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: attackCooldown
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075274292753198801, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
+      propertyPath: comboSteps.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7075274292753198801, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: comboSteps.Array.data[1].type

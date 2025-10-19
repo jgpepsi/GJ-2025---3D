@@ -11708,6 +11708,7 @@ GameObject:
   - component: {fileID: 7173058443082471374}
   - component: {fileID: 1750251732709778507}
   - component: {fileID: 5048068417645025810}
+  - component: {fileID: 8854589805158676088}
   m_Layer: 6
   m_Name: Enemy_Dodger
   m_TagString: Enemy
@@ -11803,7 +11804,7 @@ MonoBehaviour:
   speed: 0.3
   displaceDistance: 0.5
   dodgeType: 1
-  minDist: 0.2
+  minDist: 0
   displaceDuration: 0.2
   autoDodgeDist: 0
   col: {fileID: 5048068417645025810}
@@ -11830,3 +11831,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0.21133333, z: 0}
+--- !u!54 &8854589805158676088
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2363053492163506401}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 124
+  m_CollisionDetection: 0
