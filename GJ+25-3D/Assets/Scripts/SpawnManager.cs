@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviour
     public float spawnInterval;
     public float minSpawnInterval;
     public List<EnemyChance> chancesList = new List<EnemyChance>();
+    private CardSpawnController cardSpawnController;
 
     [SerializeField]
     private int wave = 0;
@@ -33,6 +34,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnNext());
+        cardSpawnController = CardSpawnController.Instance;
     }
 
     public void SpawnEnemy()
@@ -95,7 +97,7 @@ public class SpawnManager : MonoBehaviour
         waveProgress += amount;
         if(waveProgress >= waveGoal)
         {
-            NextWave();
+            //cardSpawnController.ShowCardSpawner();
         }
     }
 }

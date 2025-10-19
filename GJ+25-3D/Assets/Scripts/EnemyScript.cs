@@ -72,6 +72,7 @@ public class EnemyScript : MonoBehaviour
             health -= damage;
             if (health <= 0)
             {
+                // TimeManager.TimeInstance.ActivateSlowMotion(0.2f, 1f);
                 spawnManager.AddWaveProgress(rarity);
                 Destroy(gameObject);
             }
