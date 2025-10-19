@@ -14,10 +14,10 @@ public class EnemyScript : MonoBehaviour
     public float autoDodgeDist;
     public Collider col;
     public SpawnManager spawnManager;
-    public GameObject inRangeGraphics;
     private bool hasDodged = false;
     private bool isDisplacing = false;
     private PlayerScript player;
+    private Rigidbody rb;
 
     public enum DodgeType
     {
@@ -29,6 +29,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        rb = GetComponent<Rigidbody>(); 
     }
 
     void Update()
@@ -49,11 +50,12 @@ public class EnemyScript : MonoBehaviour
         {
             StartCoroutine(Dodge());
         }
+
+        
     }
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("Inimigo recebeu dano");
         if (dodgeType == DodgeType.dodge && !hasDodged)
         {
             StartCoroutine(Dodge());
@@ -72,6 +74,8 @@ public class EnemyScript : MonoBehaviour
             }
         }
     }
+    
+    
 
     private IEnumerator ApplyKnockback()
     {
