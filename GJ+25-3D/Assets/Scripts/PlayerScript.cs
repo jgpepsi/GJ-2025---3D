@@ -35,7 +35,7 @@ public class PlayerScript : MonoBehaviour
     public bool hasDeadlyAttack;
     public int nCounter = 0;
     public GameObject deathHitbox;
-    public float timeToHitAgain = 2f;
+    public bool canTakeDamage;
 
     private SpriteRenderer spr;
     private Rigidbody rb;
@@ -81,6 +81,7 @@ public class PlayerScript : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody>();
         isDashing = false;
+        canTakeDamage = true;
         attackTimer = attackCooldown;
     }
 
@@ -91,7 +92,6 @@ public class PlayerScript : MonoBehaviour
         FlipX(horizontal);
 
         attackTimer += Time.deltaTime;
-        timeToHitAgain += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && attackTimer >= attackCooldown)
             TryExecuteCombo(leftAtkPoint, isRightSide: false);
@@ -186,10 +186,6 @@ public class PlayerScript : MonoBehaviour
         if (target != null)
         {
             StartCoroutine(DashAndHit(atkPoint, target));
-            if(timeToHitAgain <= 2f)
-            {
-                TimeManager.TimeInstance.ActivateSlowMotion(0.2f, 1f);
-            }
         }
         else
         {
@@ -252,17 +248,39 @@ public class PlayerScript : MonoBehaviour
             float t = elapsed / dashDuration;
             Vector3 next = Vector3.Lerp(start, end, t);
             rb.MovePosition(next);
+            Collider[] hits = Physics.OverlapSphere(atkPoint.position, atkRange, enemyLayer);
+            if (hits.Length > 1)
+            {
+                //TimeManager.TimeInstance.ActivateSlowMotion(0.2f, 1f);
+                //slowApplied = true;
+            }
             elapsed += Time.deltaTime;
             yield return null;
         }
 
+        ScreenShake.Instance.Shake(0.1f, 0.01f);
+        AudioManager.instance.PlaySFX(ChooseSFX());
         rb.MovePosition(end);
-        timeToHitAgain = 0f;
         var enemy = target.GetComponent<EnemyScript>();
         if (enemy != null) enemy.TakeDamage(1);
         rb.linearVelocity = Vector3.zero;
+        StartCoroutine(IFrames());
         isDashing = false;
      
+    }
+
+    public string ChooseSFX()
+    {
+        int random = Random.Range(0, 2);
+        switch (random)
+        {
+            case 0:
+                return "LoboCorte1";
+            case 1:
+                return "LoboCorte2";
+            default:
+                return "LoboCorte3";
+        }
     }
 
     private IEnumerator DashAndMiss(Transform atkPoint, bool canDebuff)
@@ -286,6 +304,7 @@ public class PlayerScript : MonoBehaviour
         rb.MovePosition(end);
         rb.linearVelocity = Vector3.zero;
         if (canDebuff) attackTimer = 0f;
+        StartCoroutine(IFrames());
         isDashing = false;
         anim.SetTrigger("Miss");
     }
@@ -360,8 +379,27 @@ public class PlayerScript : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        AudioManager.instance.PlaySFX("LoboApanha");
         health -= damage;
+        Debug.Log("Player took damage!");
+        FreezeAllEnemies(0.25f);
+        ScreenShake.Instance.Shake(0.1f, 0.02f);
         if (health <= 0) Destroy(gameObject); //ao invés disso, volta pro main menu
+    }
+
+    public IEnumerator IFrames()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(0.5f);
+        canTakeDamage = true;
+    }
+
+    public void FreezeAllEnemies(float value)
+    {
+        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            enemy.GetComponent<EnemyScript>().StartCoroutine(enemy.GetComponent<EnemyScript>().Paralyze(value));
+        }
     }
 
     private void OnDrawGizmos()
@@ -373,7 +411,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && !isDashing)
+        if (collision.gameObject.CompareTag("Enemy") && !isDashing && canTakeDamage)
         {
             TakeDamage(1);
             Destroy(collision.gameObject);

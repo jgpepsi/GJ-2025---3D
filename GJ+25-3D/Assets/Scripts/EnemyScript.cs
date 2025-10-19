@@ -14,10 +14,10 @@ public class EnemyScript : MonoBehaviour
     public float autoDodgeDist;
     public Collider col;
     public SpawnManager spawnManager;
-    public GameObject inRangeGraphics;
     private bool hasDodged = false;
     private bool isDisplacing = false;
     private PlayerScript player;
+    private Rigidbody rb;
 
     public enum DodgeType
     {
@@ -29,6 +29,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        rb = GetComponent<Rigidbody>(); 
     }
 
     void Update()
@@ -50,19 +51,11 @@ public class EnemyScript : MonoBehaviour
             StartCoroutine(Dodge());
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) <= player.atkRange && !inRangeGraphics.activeSelf)
-        {
-            inRangeGraphics.SetActive(true);
-        }
-        else if(Vector3.Distance(player.transform.position, transform.position) > player.atkRange && inRangeGraphics.activeSelf)
-        {
-            inRangeGraphics.SetActive(true);
-        }
+        
     }
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("Inimigo recebeu dano");
         if (dodgeType == DodgeType.dodge && !hasDodged)
         {
             StartCoroutine(Dodge());
@@ -72,18 +65,22 @@ public class EnemyScript : MonoBehaviour
             health -= damage;
             if (health <= 0)
             {
-                // TimeManager.TimeInstance.ActivateSlowMotion(0.2f, 1f);
                 spawnManager.AddWaveProgress(rarity);
                 Destroy(gameObject);
             }
             else
             {
-                StartCoroutine(ApplyKnockback());
+                ApplyKnockback();
             }
         }
     }
+    public void ApplyKnockback()
+    {
+        rb.AddForce((transform.position - player.transform.position).normalized * 5f, ForceMode.Impulse);
+    }
+    
 
-    private IEnumerator ApplyKnockback()
+    /*private IEnumerator ApplyKnockback()
     {
         isDisplacing = true;
 
@@ -112,7 +109,7 @@ public class EnemyScript : MonoBehaviour
         transform.position = end;
 
         isDisplacing = false;
-    }
+    }*/
 
     private IEnumerator Dodge() 
     {
