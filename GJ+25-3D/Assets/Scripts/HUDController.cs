@@ -109,5 +109,7 @@ public class HUDController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D))
             spinner.MoveSpinner();
+
+        UpdateLifeImages();
     }
 }
