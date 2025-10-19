@@ -33,6 +33,7 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
+        NextWave();
         StartCoroutine(SpawnNext());
         cardSpawnController = CardSpawnController.Instance;
     }
