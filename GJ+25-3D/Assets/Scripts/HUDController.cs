@@ -34,6 +34,28 @@ public class HUDController : MonoBehaviour
 
     public RectTransform imageToShake;
     private Vector3 originalPosition;
+    public GameObject feed;
+
+    [Tooltip("Aumenta o tamanho da fonte ao alcançar múltiplos de 5.")]
+    public int multipleOf5 = 5;
+
+    [Tooltip("Aumenta ainda mais ao alcançar múltiplos de 10.")]
+    public int multipleOf10 = 10;
+
+    [Header("Animação de Tamanho")]
+    [Tooltip("Tamanho original da fonte.")]
+    public float originalFontSize = 36f;
+
+    [Tooltip("Tamanho da fonte ao atingir múltiplos de 5.")]
+    public float fontSizeOn5 = 42f;
+
+    [Tooltip("Tamanho da fonte ao atingir múltiplos de 10.")]
+    public float fontSizeOn10 = 50f;
+
+    [Tooltip("Duração da animação de aumento em segundos.")]
+    public float sizeAnimationDuration = 0.5f;
+
+    private Coroutine sizeCoroutine;
 
     void Start()
     {
@@ -57,6 +79,7 @@ public class HUDController : MonoBehaviour
 
         currentLives--;
         UpdateLifeImages();
+        
 
         if (currentLives <= 0)
         {
@@ -81,7 +104,7 @@ public class HUDController : MonoBehaviour
     {
         score += pointsPerEnemy;
         UpdateScoreUI();
-
+        NewUpdateScoreUI();
         if (scaleCoroutine != null)
             StopCoroutine(scaleCoroutine);
 
@@ -91,6 +114,20 @@ public class HUDController : MonoBehaviour
     private void UpdateScoreUI()
     {
         scoreText.text = score.ToString();
+    }
+
+    private void NewUpdateScoreUI()
+    {
+        scoreText.text = score.ToString();
+
+        if (score % multipleOf10 == 0)
+        {
+            FindObjectOfType<TMPMessageController>().ShowMessageByIndex(0);
+        }
+        else if (score % multipleOf5 == 0)
+        {
+            FindObjectOfType<TMPMessageController>().ShowMessageByIndex(0);
+        }
     }
 
 

@@ -17,6 +17,7 @@ public class TMPMessageController : MonoBehaviour
     public float displayTime = 2f;
 
     private Coroutine hideCoroutine;
+        
 
     void Start()
     {
