@@ -18,6 +18,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemyPrefab;
     public float spawnInterval;
     public float minSpawnInterval;
+    public LayerMask enemyLayer;
     public List<EnemyChance> chancesList = new List<EnemyChance>();
     private CardSpawnController cardSpawnController;
 
@@ -39,15 +40,28 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnEnemy()
     {
+        Collider[] hits;
+
         if (Random.Range(0,2) > 0)
         {
-            var enemy = Instantiate(GetRandomEnemy(), spawnPosRight.position, Quaternion.identity);
-            enemy.GetComponent<EnemyScript>().spawnManager = this;
+            hits = Physics.OverlapSphere(spawnPosRight.position, .75f, enemyLayer);
+
+            if (hits.Length < 1)
+            {
+                var enemy = Instantiate(GetRandomEnemy(), spawnPosRight.position, Quaternion.identity);
+                enemy.GetComponent<EnemyScript>().spawnManager = this;
+            }
         }
         else
         {
-            var enemy = Instantiate(GetRandomEnemy(), spawnPosLeft.position, Quaternion.identity);
-            enemy.GetComponent<EnemyScript>().spawnManager = this;
+            hits = Physics.OverlapSphere(spawnPosRight.position, .75f, enemyLayer);
+
+            if (hits.Length < 1)
+            {
+                var enemy = Instantiate(GetRandomEnemy(), spawnPosLeft.position, Quaternion.identity);
+                enemy.GetComponent<EnemyScript>().spawnManager = this;
+            }
+
         }
     }
 

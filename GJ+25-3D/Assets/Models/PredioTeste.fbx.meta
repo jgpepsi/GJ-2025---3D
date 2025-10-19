@@ -3,7 +3,37 @@ guid: 51b778daf04ab9847ac0a0a4ef1027e8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paredes
+    second: {fileID: 2100000, guid: 42907bcd4d66e0d4986db6e73820e9f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pilar
+    second: {fileID: 2100000, guid: 22089231ec8e3144198e6fb0f7c8bc1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Porta
+    second: {fileID: 2100000, guid: 70685a4793b1ed24093b2dd0b9b93635, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Teto
+    second: {fileID: 2100000, guid: f337f62bfd9b7764db4b4ecd561f2313, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vidro
+    second: {fileID: 2100000, guid: 43c8cfcaf0b050c488e7c3eb4446b58a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VidroLuminoso
+    second: {fileID: 2100000, guid: 66e12be3f0cdf1542a25a5f4636f4c3d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
