@@ -16,7 +16,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] private Color fullColor = Color.white;
     [SerializeField] private Color emptyColor = new Color(1f, 1f, 1f, 0.3f);
 
-    [Header("Pontuação")]
+    [Header("Pontuacao")]
     [SerializeField] private int pointsPerEnemy = 10;
     private int score = 0;
 
@@ -25,12 +25,31 @@ public class HUDController : MonoBehaviour
     private Vector3 originalScale;
     private Coroutine scaleCoroutine;
 
+    [Header("Configuração do Shake")]
+    [Tooltip("Duracao total do tremor (em segundos)")]
+    public float shakeDuration = 0.2f;
+
+    [Tooltip("Intensidade do tremor")]
+    public float shakeAmount = 5f;
+
+    public RectTransform imageToShake;
+    private Vector3 originalPosition;
+
     void Start()
     {
         originalScale = scoreText.transform.localScale;
         currentLives = maxLives;
         UpdateLifeImages();
         UpdateScoreUI();
+
+        if (imageToShake != null)
+        {
+            originalPosition = imageToShake.anchoredPosition;
+        }
+        else
+        {
+            Debug.LogWarning(" Nenhuma imagem foi atribuída para tremer!");
+        }
     }
     public void TakeDamage()
     {
@@ -42,11 +61,13 @@ public class HUDController : MonoBehaviour
         if (currentLives <= 0)
         {
             Debug.Log("Game Over!");
+            imageToShake.gameObject.SetActive(false);
         }
-    }    
+        StartShake();
+    }
 
     private void UpdateLifeImages()
-    {
+    {        
         for (int i = 0; i < lifeImages.Length; i++)
         {
             if (i < currentLives)
@@ -60,7 +81,7 @@ public class HUDController : MonoBehaviour
     {
         score += pointsPerEnemy;
         UpdateScoreUI();
-                
+
         if (scaleCoroutine != null)
             StopCoroutine(scaleCoroutine);
 
@@ -72,7 +93,7 @@ public class HUDController : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-   
+
     private IEnumerator AnimateScoreUI()
     {
         Vector3 targetScale = originalScale * 1.5f;
@@ -106,4 +127,32 @@ public class HUDController : MonoBehaviour
 
         UpdateLifeImages();
     }
+
+    public void StartShake()
+    {
+        if (imageToShake != null)
+        {
+            StopAllCoroutines();
+            StartCoroutine(ShakeCoroutine());
+        }
+    }
+
+    private IEnumerator ShakeCoroutine()
+    {
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration)
+        {
+            float offsetX = Random.Range(-1f, 1f) * shakeAmount;
+            float offsetY = Random.Range(-1f, 1f) * shakeAmount;
+
+            imageToShake.anchoredPosition = originalPosition + new Vector3(offsetX, offsetY, 0f);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        imageToShake.anchoredPosition = originalPosition;
+    }
+
 }
