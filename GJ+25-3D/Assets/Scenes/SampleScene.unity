@@ -217,30 +217,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 83739138931135316, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2113322280, guid: 43f2e70115bd4db41a2beff3139e885b, type: 3}
-    - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
-      propertyPath: spawnInterval
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
-      propertyPath: chancesList.Array.data[0].enemy
-      value: 
-      objectReference: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
-    - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
-      propertyPath: chancesList.Array.data[1].enemy
-      value: 
-      objectReference: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
-    - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
-      propertyPath: chancesList.Array.data[2].enemy
-      value: 
-      objectReference: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
-    - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
-      propertyPath: chancesList.Array.data[3].enemy
-      value: 
-      objectReference: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
     - target: {fileID: 2093744334489970627, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_Name
       value: Player
@@ -284,14 +260,6 @@ PrefabInstance:
     - target: {fileID: 6292947586030643629, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7075274292753198801, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
-      propertyPath: deathHitbox
-      value: 
-      objectReference: {fileID: 2361493206566600733, guid: 00bc2f432555d1d499580273a92d753c, type: 3}
-    - target: {fileID: 7075274292753198801, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
-      propertyPath: attackCooldown
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

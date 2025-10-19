@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Vida / Status")]
     public int health = 3;
+    public int maxHealth = 3;
 
     [Header("Movimento / Dash")]
     public float speed = 5f;
@@ -31,20 +32,21 @@ public class PlayerScript : MonoBehaviour
     public GameObject piercingProjectilePrefab;
     public float shotSpeed = 12f;
 
-    [SerializeField] private HUDController hudController;
-
     public bool isShielded;
     public bool hasDeadlyAttack;
     public int nCounter = 0;
     public GameObject deathHitbox;
     public bool canTakeDamage;
+    private UpgradeManager upgradeManager;
+    //public CameraZoomEffect cameraZoomEffect;
+
+    public int pointsToGetUpgrade = 0;
+    private int necessaryPointsForUpgrade;
 
     private SpriteRenderer spr;
     private Rigidbody rb;
 
     public Animator anim;
-
-    public GameOverUI gameOverUI;
 
     // =======================
     //         COMBO
@@ -87,6 +89,8 @@ public class PlayerScript : MonoBehaviour
         isDashing = false;
         canTakeDamage = true;
         attackTimer = attackCooldown;
+        upgradeManager = GetComponent<UpgradeManager>();
+        SetRandomKillsToNextUpgrade();
     }
 
 
@@ -183,12 +187,44 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void OnEnemyKilled()
+    {
+        pointsToGetUpgrade++;
+        if(pointsToGetUpgrade >= necessaryPointsForUpgrade)
+        {
+            if(upgradeManager != null)
+            {
+                upgradeManager.GetRandomUpgrade();
+            }
+            pointsToGetUpgrade = 0;
+            SetRandomKillsToNextUpgrade();
+        }
+    }
+
     // =======================
     //       ATAQUES
     // =======================
     public void Attack(Transform atkPoint)
     {
+
+        
         if (atkPoint == null) return;
+        if(upgradeManager != null && upgradeManager.UseSpecialAttack())
+        {
+            UseSpecialAttack();
+            return;
+        }
+
+
+        int animIndex = Random.Range(0, 2);
+        if (animIndex == 0)
+        {
+            anim.SetTrigger("Attack");
+        }
+        else
+        {
+            anim.SetTrigger("Attack2");
+        }
         Collider[] hits = Physics.OverlapSphere(atkPoint.position, atkRange, enemyLayer);
         Collider target = GetClosest(hits);
         if (target != null)
@@ -245,7 +281,7 @@ public class PlayerScript : MonoBehaviour
 
     private IEnumerator DashAndHit(Transform atkPoint, Collider target)
     {
-        anim.SetTrigger("Attack");
+        
         isDashing = true;
         Vector3 start = transform.position;
         Vector3 end = Vector3.zero;
@@ -398,12 +434,22 @@ public class PlayerScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         AudioManager.instance.PlaySFX("LoboApanha");
+        if (isShielded)
+        {
+            isShielded = false;
+            upgradeManager.hasCard = false;
+            return;
+        }
         health -= damage;
-        LoseLife();
+        if (upgradeManager != null && upgradeManager.hasPendingPotion)
+        {
+            upgradeManager.ApplyPendingPotion();
+            return;
+        }
         Debug.Log("Player took damage!");
         FreezeAllEnemies(0.25f);
         ScreenShake.Instance.Shake(0.1f, 0.02f);
-        if (health <= 0) gameOverUI.ShowGameOver(); ; //ao invés disso, volta pro main menu
+        if (health <= 0) Destroy(gameObject); //ao invés disso, vai pra tela de game over
     }
 
     public IEnumerator IFrames()
@@ -430,12 +476,22 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && !isDashing && canTakeDamage)
+        if (collision.gameObject.CompareTag("Enemy") && !isDashing)
         {
-            TakeDamage(1);
+            if (canTakeDamage)
+            {
+                TakeDamage(1);
+            }
             Destroy(collision.gameObject);
         }
     }
+
+    public void AddPointsToGetUpgrade()
+    {
+        pointsToGetUpgrade++;
+    }
+
+    
 
     public void InsertAttackType(int type)
     {
@@ -497,19 +553,21 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    private void SetRandomKillsToNextUpgrade()
+    {
+        necessaryPointsForUpgrade = Random.Range(10, 16);
+        Debug.Log(necessaryPointsForUpgrade);
+    }
+
+    /*public void ApplyCameraMovement()
+    {
+        cameraZoomEffect.ZoomInAndOut(-5f,-10f,10f,5f,0.5f);
+        TimeManager.TimeInstance.ActivateSlowMotion(0.2f, 0.5f);
+    }*/
+
     public void GiveDeadlyAttack()
     {
         hasDeadlyAttack = true;
         nCounter = 0;
-    }
-
-    public void AddScoreHUD()
-    {
-        hudController.AddScore();
-    }
-
-    public void LoseLife()
-    {
-        hudController.TakeDamage();
     }
 }

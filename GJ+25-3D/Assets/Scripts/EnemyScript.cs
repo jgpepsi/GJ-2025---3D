@@ -19,8 +19,6 @@ public class EnemyScript : MonoBehaviour
     private PlayerScript player;
     private Rigidbody rb;
 
-    public HUDController hudController;
-
     public enum DodgeType
     {
         noDodge,
@@ -68,8 +66,7 @@ public class EnemyScript : MonoBehaviour
             if (health <= 0)
             {
                 spawnManager.AddWaveProgress(rarity);
-                hudController.AddScore();
-                Destroy(gameObject);
+                Die();
             }
             else
             {
@@ -161,7 +158,13 @@ public class EnemyScript : MonoBehaviour
     {
         if (other.CompareTag("DEATH"))
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        player.OnEnemyKilled();
+        Destroy(gameObject);
     }
 }
