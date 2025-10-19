@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 31085c235cbe12d49955b2b72f357e42
+guid: b93c0242ccece934288b3f2f13166c66
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RightBarWhite-export_0
+      name: RightBarWhite 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 192
-        height: 48
+        width: 64
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 753178264696b4f4a838ab82b92b30b4
-      internalID: 1434081710
+      spriteID: 5d01e4d0019343b4fbe61c4c0c095f79
+      internalID: -420175606
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ac011758fa34be147bdf035dec3d2043
+    spriteID: a366c978124dba24fb33badb08737f3d
     internalID: 0
     vertices: []
     indices: 
@@ -171,7 +171,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      RightBarWhite-export_0: 1434081710
+      RightBarWhite 1_0: -420175606
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

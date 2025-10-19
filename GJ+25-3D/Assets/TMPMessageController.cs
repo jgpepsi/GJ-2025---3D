@@ -16,13 +16,24 @@ public class TMPMessageController : MonoBehaviour
     [Tooltip("Tempo em segundos que a mensagem ficará ativa.")]
     public float displayTime = 2f;
 
+    [Header("Configuração do Bounce")]
+    [Tooltip("Tamanho máximo da escala no efeito bounce.")]
+    public float bounceScale = 1.3f;
+    [Tooltip("Velocidade de oscilação do bounce.")]
+    public float bounceSpeed = 3f;
+
     private Coroutine hideCoroutine;
+    private Coroutine bounceCoroutine;
+    public Vector3 originalScale;
 
     void Start()
     {
         // Garante que o texto começa invisível
         if (messageText != null)
+        {
             messageText.gameObject.SetActive(false);
+            originalScale = messageText.rectTransform.localScale;
+        }
     }
 
     void Update()
@@ -61,7 +72,11 @@ public class TMPMessageController : MonoBehaviour
         if (hideCoroutine != null)
             StopCoroutine(hideCoroutine);
 
-        // Inicia a contagem para esconder o texto
+        if (bounceCoroutine != null)
+            StopCoroutine(bounceCoroutine);
+
+        // Inicia as coroutines de bounce e hide
+        bounceCoroutine = StartCoroutine(BounceEffect());
         hideCoroutine = StartCoroutine(HideMessageAfterTime());
     }
 
@@ -72,6 +87,33 @@ public class TMPMessageController : MonoBehaviour
     {
         yield return new WaitForSeconds(displayTime);
         messageText.gameObject.SetActive(false);
+
+        // Reseta a escala
+        messageText.rectTransform.localScale = originalScale;
+
         hideCoroutine = null;
+
+        // Para o bounce
+        if (bounceCoroutine != null)
+        {
+            StopCoroutine(bounceCoroutine);
+            bounceCoroutine = null;
+        }
+    }
+
+    /// <summary>
+    /// Faz o texto "pulsar" com efeito bounce enquanto estiver ativo.
+    /// </summary>
+    private IEnumerator BounceEffect()
+    {
+        float timer = 1f;
+        while (messageText.gameObject.activeSelf)
+        {
+            float scale = Mathf.Lerp(1f, bounceScale, (Mathf.Sin(timer * bounceSpeed) + 1f) / 2f);
+            messageText.rectTransform.localScale = originalScale * scale;
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
     }
 }
