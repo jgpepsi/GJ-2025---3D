@@ -240,7 +240,17 @@ public class PlayerScript : MonoBehaviour
         anim.SetTrigger("Attack");
         isDashing = true;
         Vector3 start = transform.position;
-        Vector3 end = target.transform.position;
+        Vector3 end = Vector3.zero;
+
+        if (target.transform.position.x > transform.position.x)// inimigo na direita
+        {
+            end = target.transform.position + Vector3.left * .1f;
+        }
+        else if (target.transform.position.x < transform.position.x)// inimigo a esquerda
+        {
+            end = target.transform.position + Vector3.right * .1f;
+        }
+
         float elapsed = 0f;
 
         while (elapsed < dashDuration)
