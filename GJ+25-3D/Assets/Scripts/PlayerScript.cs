@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Vida / Status")]
     public int health = 3;
+    public int maxHealth = 3;
 
     [Header("Movimento / Dash")]
     public float speed = 5f;
@@ -36,6 +37,7 @@ public class PlayerScript : MonoBehaviour
     public int nCounter = 0;
     public GameObject deathHitbox;
     public bool canTakeDamage;
+    private UpgradeManager upgradeManager;
 
     private SpriteRenderer spr;
     private Rigidbody rb;
@@ -83,6 +85,7 @@ public class PlayerScript : MonoBehaviour
         isDashing = false;
         canTakeDamage = true;
         attackTimer = attackCooldown;
+        upgradeManager = GetComponent<UpgradeManager>();
     }
 
 
@@ -185,6 +188,11 @@ public class PlayerScript : MonoBehaviour
     public void Attack(Transform atkPoint)
     {
         if (atkPoint == null) return;
+        if(upgradeManager != null && upgradeManager.UseSpecialAttack())
+        {
+            UseSpecialAttack();
+        }
+
         Collider[] hits = Physics.OverlapSphere(atkPoint.position, atkRange, enemyLayer);
         Collider target = GetClosest(hits);
         if (target != null)
@@ -394,7 +402,15 @@ public class PlayerScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         AudioManager.instance.PlaySFX("LoboApanha");
-        health -= damage;
+        if (isShielded)
+        {
+            isShielded = false;
+            return;
+        }
+        if(upgradeManager != null && upgradeManager.hasPendingPotion)
+        {
+            upgradeManager.ApplyPendingPotion();
+        }
         Debug.Log("Player took damage!");
         FreezeAllEnemies(0.25f);
         ScreenShake.Instance.Shake(0.1f, 0.02f);
