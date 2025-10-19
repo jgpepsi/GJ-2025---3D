@@ -19,6 +19,8 @@ public class EnemyScript : MonoBehaviour
     private PlayerScript player;
     private Rigidbody rb;
 
+    public HUDController hudController;
+
     public enum DodgeType
     {
         noDodge,
