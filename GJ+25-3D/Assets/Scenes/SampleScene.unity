@@ -148,8 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8e8c2224a8cf9438f459ef3290880a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonList: []
-  buttonPos: []
 --- !u!4 &133706260
 Transform:
   m_ObjectHideFlags: 0
@@ -228,17 +226,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
+      propertyPath: chancesList.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
+    - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: chancesList.Array.data[1].enemy
       value: 
       objectReference: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
     - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: chancesList.Array.data[2].enemy
       value: 
-      objectReference: {fileID: 2382335870635828759, guid: 2951293d3a6f3114d89760a40affb80b, type: 3}
+      objectReference: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
     - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: chancesList.Array.data[3].enemy
       value: 
-      objectReference: {fileID: 3902108499948905999, guid: eaf4b7e50b4467343b91ec2c553655fa, type: 3}
+      objectReference: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
     - target: {fileID: 2093744334489970627, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_Name
       value: Player
@@ -283,6 +285,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7075274292753198801, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
+      propertyPath: deathHitbox
+      value: 
+      objectReference: {fileID: 2361493206566600733, guid: 00bc2f432555d1d499580273a92d753c, type: 3}
     - target: {fileID: 7075274292753198801, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: attackCooldown
       value: 1
