@@ -101,12 +101,6 @@ public class HUDController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-            TakeDamage();
-
-        if (Input.GetKeyDown(KeyCode.K))
-            AddScore();
-
         if (Input.GetKeyDown(KeyCode.D))
             spinner.MoveSpinner();
 
