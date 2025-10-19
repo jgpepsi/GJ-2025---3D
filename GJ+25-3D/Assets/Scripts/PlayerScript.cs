@@ -35,7 +35,7 @@ public class PlayerScript : MonoBehaviour
     public bool hasDeadlyAttack;
     public int nCounter = 0;
     public GameObject deathHitbox;
-    public bool timeSlow = false;
+    public float timeToHitAgain = 2f;
 
     private SpriteRenderer spr;
     private Rigidbody rb;
@@ -91,6 +91,7 @@ public class PlayerScript : MonoBehaviour
         FlipX(horizontal);
 
         attackTimer += Time.deltaTime;
+        timeToHitAgain += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && attackTimer >= attackCooldown)
             TryExecuteCombo(leftAtkPoint, isRightSide: false);
@@ -185,9 +186,9 @@ public class PlayerScript : MonoBehaviour
         if (target != null)
         {
             StartCoroutine(DashAndHit(atkPoint, target));
-            if(hits.Length > 1)
+            if(timeToHitAgain <= 2f)
             {
-                timeSlow = true;
+                TimeManager.TimeInstance.ActivateSlowMotion(0.2f, 1f);
             }
         }
         else
@@ -256,15 +257,12 @@ public class PlayerScript : MonoBehaviour
         }
 
         rb.MovePosition(end);
-        if (timeSlow)
-        {
-            TimeManager.TimeInstance.ActivateSlowMotion(0.2f, 1f);
-            timeSlow = false;
-        }
+        timeToHitAgain = 0f;
         var enemy = target.GetComponent<EnemyScript>();
         if (enemy != null) enemy.TakeDamage(1);
         rb.linearVelocity = Vector3.zero;
         isDashing = false;
+     
     }
 
     private IEnumerator DashAndMiss(Transform atkPoint, bool canDebuff)
