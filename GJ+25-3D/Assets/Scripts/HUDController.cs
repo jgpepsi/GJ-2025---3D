@@ -35,6 +35,24 @@ public class HUDController : MonoBehaviour
     public RectTransform imageToShake;
     private Vector3 originalPosition;
 
+    [Tooltip("Aumenta o tamanho da fonte ao alcançar múltiplos de 5.")]
+    public int multipleOf5 = 5;
+
+    [Tooltip("Aumenta ainda mais ao alcançar múltiplos de 10.")]
+    public int multipleOf10 = 10;
+
+    [Tooltip("Tamanho da fonte ao atingir múltiplos de 5.")]
+    public float fontSizeOn5 = 42f;
+
+    [Tooltip("Tamanho da fonte ao atingir múltiplos de 10.")]
+    public float fontSizeOn10 = 50f;
+
+    [Tooltip("Duração da animação de aumento em segundos.")]
+    public float sizeAnimationDuration = 0.5f;
+
+    [SerializeField] public object TMPFeed;
+
+
     void Start()
     {
         originalScale = scoreText.transform.localScale;
@@ -53,9 +71,12 @@ public class HUDController : MonoBehaviour
     }
     public void TakeDamage()
     {
+
         if (currentLives <= 0) return;
 
         currentLives--;
+        score = 0;
+        UpdateScoreUI();
         UpdateLifeImages();
 
         if (currentLives <= 0)
@@ -91,6 +112,18 @@ public class HUDController : MonoBehaviour
     private void UpdateScoreUI()
     {
         scoreText.text = score.ToString();
+
+        if (score % multipleOf10 == 0)
+        {
+            NewAnimateScoreUI();
+            print("Atingiu 10");
+            FindObjectOfType<TMPMessageController>().ShowMessageByIndex(0);
+        }
+        else if (score % multipleOf5 == 0)
+        {
+            NewAnimateScoreUI();
+            FindObjectOfType<TMPMessageController>().ShowMessageByIndex(1);
+        }
     }
 
 
@@ -120,6 +153,32 @@ public class HUDController : MonoBehaviour
         scoreText.transform.localScale = originalScale;
     }
 
+    private IEnumerator NewAnimateScoreUI()
+    {
+        Vector3 targetScale5 = originalScale * 100f;
+        float duration = 0.1f;
+        float t = 0f;
+
+        // aumenta de tamanho
+        while (t < duration)
+        {
+            scoreText.transform.localScale = Vector3.Lerp(originalScale, targetScale5, t / duration);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        scoreText.transform.localScale = targetScale5;
+
+        // volta ao tamanho
+        t = 0f;
+        while (t < duration)
+        {
+            scoreText.transform.localScale = Vector3.Lerp(targetScale5, originalScale, t / duration);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        scoreText.transform.localScale = originalScale;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.D))
@@ -129,7 +188,7 @@ public class HUDController : MonoBehaviour
     }
 
     public void StartShake()
-    {
+    {        
         if (imageToShake != null)
         {
             StopAllCoroutines();
@@ -154,5 +213,6 @@ public class HUDController : MonoBehaviour
 
         imageToShake.anchoredPosition = originalPosition;
     }
+
 
 }
