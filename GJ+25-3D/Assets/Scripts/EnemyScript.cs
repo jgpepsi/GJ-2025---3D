@@ -71,6 +71,7 @@ public class EnemyScript : MonoBehaviour
             else
             {
                 StartCoroutine(ApplyKnockback());
+                
             }
         }
     }
@@ -106,6 +107,7 @@ public class EnemyScript : MonoBehaviour
         transform.position = end;
 
         isDisplacing = false;
+        StartCoroutine(Paralyze(0.5f));
     }
 
     private IEnumerator Dodge() 
@@ -150,5 +152,13 @@ public class EnemyScript : MonoBehaviour
         speed = 0;
         yield return new WaitForSeconds(duration);
         speed = originalSpeed;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("DEATH"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
