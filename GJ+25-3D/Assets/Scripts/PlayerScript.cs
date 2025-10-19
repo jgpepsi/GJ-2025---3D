@@ -40,7 +40,7 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer spr;
     private Rigidbody rb;
 
-    //public Animator anim;
+    public Animator anim;
 
     // =======================
     //         COMBO
@@ -98,7 +98,7 @@ public class PlayerScript : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow) && attackTimer >= attackCooldown)
             TryExecuteCombo(rightAtkPoint, isRightSide: true);
 
-        
+
     }
 
     public void FlipX(float horizontal)
@@ -143,7 +143,7 @@ public class PlayerScript : MonoBehaviour
         if (currentComboIndex >= comboSteps.Count)
             currentComboIndex = 0;
 
-        
+
     }
 
     private void ExecuteAttackType(AttackType type, Transform atkPoint)
@@ -237,7 +237,7 @@ public class PlayerScript : MonoBehaviour
 
     private IEnumerator DashAndHit(Transform atkPoint, Collider target)
     {
-        //anim.SetTrigger("Attack");
+        anim.SetTrigger("Attack");
         isDashing = true;
         Vector3 start = transform.position;
         Vector3 end = target.transform.position;
@@ -266,7 +266,7 @@ public class PlayerScript : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         StartCoroutine(IFrames());
         isDashing = false;
-     
+
     }
 
     public string ChooseSFX()
@@ -285,7 +285,7 @@ public class PlayerScript : MonoBehaviour
 
     private IEnumerator DashAndMiss(Transform atkPoint, bool canDebuff)
     {
-        //anim.SetTrigger("Attack");
+        anim.SetTrigger("Attack");
         isDashing = true;
         Vector3 start = transform.position;
         Vector3 dir = (atkPoint.position - transform.position).normalized;
@@ -306,12 +306,12 @@ public class PlayerScript : MonoBehaviour
         if (canDebuff) attackTimer = 0f;
         StartCoroutine(IFrames());
         isDashing = false;
-        //anim.SetTrigger("Miss");
+        anim.SetTrigger("Miss");
     }
 
     public void ShootProjectile(bool isPiercing)
     {
-        //anim.SetTrigger("Shoot");
+        anim.SetTrigger("Shoot");
         GameObject prefab = isPiercing ? piercingProjectilePrefab : projectilePrefab;
         if (prefab == null) return;
         GameObject bullet = Instantiate(prefab, transform.position, Quaternion.identity);
@@ -330,7 +330,7 @@ public class PlayerScript : MonoBehaviour
 
     private IEnumerator LongAttackDash(Transform atkPoint, float extraRange)
     {
-        
+
         float originalRange = atkRange;
         atkRange += extraRange;
 
@@ -396,7 +396,7 @@ public class PlayerScript : MonoBehaviour
 
     public void FreezeAllEnemies(float value)
     {
-        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             enemy.GetComponent<EnemyScript>().StartCoroutine(enemy.GetComponent<EnemyScript>().Paralyze(value));
         }
@@ -434,7 +434,7 @@ public class PlayerScript : MonoBehaviour
             case 2:
                 {
                     var attackType = new AttackStep() { type = AttackType.DoubleMelee, cooldownMultiplier = 1f };
-        
+
 
                     comboSteps.Add(attackType);
 
@@ -468,7 +468,7 @@ public class PlayerScript : MonoBehaviour
                     break;
                 }
             case 6:
-                {                     
+                {
                     var attackType = new AttackStep() { type = AttackType.Howl, cooldownMultiplier = 1f };
                     comboSteps.Add(attackType);
                     break;
