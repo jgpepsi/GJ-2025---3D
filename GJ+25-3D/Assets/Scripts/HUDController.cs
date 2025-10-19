@@ -1,13 +1,16 @@
+using JetBrains.Annotations;
+using System.Collections;
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections;
 
 public class HUDController : MonoBehaviour
 {
     [Header("Vida")]
     [SerializeField] private int maxLives = 3;
     [SerializeField] private int currentLives;
+    [SerializeField] private HUDSpinner spinner;
 
     [SerializeField] private Image[] lifeImages;
     [SerializeField] private Color fullColor = Color.white;
@@ -103,5 +106,8 @@ public class HUDController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
             AddScore();
+
+        if (Input.GetKeyDown(KeyCode.D))
+            spinner.MoveSpinner();
     }
 }

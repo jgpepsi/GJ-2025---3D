@@ -98,6 +98,10 @@ public class PlayerScript : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow) && attackTimer >= attackCooldown)
             TryExecuteCombo(rightAtkPoint, isRightSide: true);
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            UseSpecialAttack();
+        }
 
     }
 
