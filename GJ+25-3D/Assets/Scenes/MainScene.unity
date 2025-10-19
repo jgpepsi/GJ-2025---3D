@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6d9cf26d6deee4699458872466e7b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: JimbetsMenus
+  sceneName: Jimbets Luz
   flashImage: {fileID: 1902725120}
   fadePanel: {fileID: 1202200078}
 --- !u!1 &1776676135
