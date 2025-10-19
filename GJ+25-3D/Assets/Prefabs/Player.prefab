@@ -101,7 +101,7 @@ Transform:
   m_GameObject: {fileID: 2046278744981809667}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 5901755056539391151}
   - component: {fileID: 994798303504461415}
   - component: {fileID: 2553137250680809878}
+  - component: {fileID: 2934468510002569808}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -250,12 +251,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2113322280, guid: 43f2e70115bd4db41a2beff3139e885b, type: 3}
+  m_Sprite: {fileID: -1518452069, guid: d0526d2d5ac1efc4cbfee7b8268b39e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -274,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  maxHealth: 3
   speed: 0.1
   isDashing: 0
   dashDuration: 0.1
@@ -284,16 +286,16 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  atkRange: 0.5
+  atkRange: 1.5
   projectilePrefab: {fileID: 623720071277163541, guid: c5e7b10ac606fbb4aa326df3cbb8940c, type: 3}
   piercingProjectilePrefab: {fileID: 623720071277163541, guid: c5831dad02606e54996035e0819f9b9d, type: 3}
   shotSpeed: 0.5
-  hudController: {fileID: 0}
   isShielded: 0
   hasDeadlyAttack: 0
   nCounter: 0
-  deathHitbox: {fileID: 0}
+  deathHitbox: {fileID: 2361493206566600733, guid: 00bc2f432555d1d499580273a92d753c, type: 3}
   canTakeDamage: 0
+  pointsToGetUpgrade: 0
   anim: {fileID: 2553137250680809878}
   comboSteps:
   - type: 0
@@ -344,8 +346,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3210354, y: 0.40988284, z: 0.2}
-  m_Center: {x: 0.049976826, y: 0.20268276, z: 0}
+  m_Size: {x: 1.111012, y: 1.8946574, z: 0.2}
+  m_Center: {x: 0.06425357, y: -0.063815236, z: 0}
 --- !u!95 &2553137250680809878
 Animator:
   serializedVersion: 7
@@ -368,6 +370,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2934468510002569808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093744334489970627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe2db7a22dd6994d8c422ff1fa4a970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialUpgradeActive: 0
+  specialAttackMax: 3
+  hasPendingPotion: 0
+  hasCard: 0
 --- !u!1 &2312067219066528999
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,21 +433,20 @@ MonoBehaviour:
   spawnPosRight: {fileID: 3239450636605337189}
   spawnPosLeft: {fileID: 5227285087143903226}
   enemyPrefab: {fileID: 2363053492163506401, guid: 4253f1d19adb32b4482d27d8fa6eed8d, type: 3}
-  spawnInterval: 1
+  spawnInterval: 0.8
   minSpawnInterval: 0.2
   chancesList:
   - enemy: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
     chance: 10
   - enemy: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
-    chance: 2
-  - enemy: {fileID: 2382335870635828759, guid: 2951293d3a6f3114d89760a40affb80b, type: 3}
+    chance: 4
+  - enemy: {fileID: 1690292172182815242, guid: 71d39e728fe236f458363f0d38a631cf, type: 3}
     chance: 0
   - enemy: {fileID: 3902108499948905999, guid: eaf4b7e50b4467343b91ec2c553655fa, type: 3}
     chance: 0
   wave: 0
   waveProgress: 0
   waveGoal: 10
-  hudController: {fileID: 0}
   chanceSum: 0
 --- !u!1 &2435027187100922734
 GameObject:
@@ -456,7 +473,7 @@ Transform:
   m_GameObject: {fileID: 2435027187100922734}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -489,7 +506,7 @@ Transform:
   m_GameObject: {fileID: 3023781884069709767}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -756,7 +773,7 @@ Transform:
   m_GameObject: {fileID: 6396743427374038988}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: -1.37}
+  m_LocalPosition: {x: 0, y: 0.2, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -904,7 +921,7 @@ Transform:
   m_GameObject: {fileID: 7050283429987073761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.2, z: 0}
+  m_LocalPosition: {x: -1.5, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1075,7 +1092,7 @@ Transform:
   m_GameObject: {fileID: 7796250665408968573}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0.2, z: 0}
+  m_LocalPosition: {x: 1.5, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
