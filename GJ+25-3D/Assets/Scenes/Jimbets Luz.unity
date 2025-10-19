@@ -10088,7 +10088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1304809918, guid: 31831473b9d22034db12688c34679a6f, type: 3}
+  m_Sprite: {fileID: 1801232353, guid: dc91efee7257663469c8db96a8da6bbd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13667,7 +13667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1802069286, guid: 26e51c5e93490a04d8505b59b442eb84, type: 3}
+  m_Sprite: {fileID: 949553970, guid: f599cedb0a2fb634eb2b6b8492155f61, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14214,6 +14214,7 @@ GameObject:
   - component: {fileID: 1201729137}
   - component: {fileID: 1201729136}
   - component: {fileID: 1201729134}
+  - component: {fileID: 1201729139}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -14321,6 +14322,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1201729139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201729133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a894fadd0b971b479c53e224014b3f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageText: {fileID: 1246193393}
+  messages:
+  - Here comes Pyggis!!
+  - Hey Poser!!
+  displayTime: 2
 --- !u!1 &1217987980
 GameObject:
   m_ObjectHideFlags: 0
@@ -14734,16 +14752,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246193391}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.26008323, w: 0.96558625}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1201729135}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30.15}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 216, y: 155}
+  m_AnchoredPosition: {x: -328.6, y: 31.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1246193393
@@ -14766,7 +14784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Fantastic!!
+  m_text: 'Lets Rock!!
 
 '
   m_isRightToLeft: 0
@@ -14777,8 +14795,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4292608255
+  m_fontColor: {r: 1, g: 0, b: 0.862061, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -16489,7 +16507,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -654066694, guid: 1023b825bc2f2c74a9c12d16ad60fee5, type: 3}
+  m_Sprite: {fileID: -55042289, guid: 9a6dbea62b17ef44aa607e6cda962a06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18680,7 +18698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -654066694, guid: 1023b825bc2f2c74a9c12d16ad60fee5, type: 3}
+  m_Sprite: {fileID: -55042289, guid: 9a6dbea62b17ef44aa607e6cda962a06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20270,7 +20288,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -654066694, guid: 1023b825bc2f2c74a9c12d16ad60fee5, type: 3}
+  m_Sprite: {fileID: -55042289, guid: 9a6dbea62b17ef44aa607e6cda962a06, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

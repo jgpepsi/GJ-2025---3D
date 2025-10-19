@@ -430,9 +430,11 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && !isDashing && canTakeDamage)
+        if (collision.gameObject.CompareTag("Enemy") && !isDashing)
         {
-            TakeDamage(1);
+            if (canTakeDamage){
+                TakeDamage(1);
+            }
             Destroy(collision.gameObject);
         }
     }
