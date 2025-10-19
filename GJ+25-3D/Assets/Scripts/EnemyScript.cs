@@ -20,6 +20,8 @@ public class EnemyScript : MonoBehaviour
     private Rigidbody rb;
 
     public HUDController hudController;
+    public Animator anim;
+    private SpriteRenderer spr;
 
     public enum DodgeType
     {
@@ -31,7 +33,8 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        rb = GetComponent<Rigidbody>(); 
+        rb = GetComponent<Rigidbody>();
+        spr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -41,10 +44,14 @@ public class EnemyScript : MonoBehaviour
             if(transform.position.x > player.transform.position.x)
             {
                 transform.position += Vector3.left * speed * Time.deltaTime;
+                if(col.enabled)
+                spr.flipX = true;
             }
             else if(transform.position.x < player.transform.position.x)
             {
                 transform.position += Vector3.right * speed * Time.deltaTime;
+                if(col.enabled)
+                spr.flipX = false;
             }
         }
 
@@ -69,7 +76,9 @@ public class EnemyScript : MonoBehaviour
             {
                 spawnManager.AddWaveProgress(rarity);
                 hudController.AddScore();
-                Destroy(gameObject);
+                anim.SetTrigger("isDead");
+                col.enabled = false;
+
             }
             else
             {
@@ -163,5 +172,10 @@ public class EnemyScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }

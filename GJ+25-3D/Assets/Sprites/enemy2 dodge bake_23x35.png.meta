@@ -1,0 +1,1497 @@
+fileFormatVersion: 2
+guid: c03fc03d684564547b54419f075cb72b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 210
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7bbe48de99966e49b6c4914b59d89d3
+      internalID: 2067196895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_1
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 210
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e66d754d76f46cb4e8b7ea08eb115cd9
+      internalID: 807022505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_2
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 210
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f54cdc5d77b126c4988d71844f7ea748
+      internalID: 1300834509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_3
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 210
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1271eee1196af6a45935fde960e1d424
+      internalID: -2099089213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_4
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 210
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e21b78d365cd87459ebd57aa11cc1d9
+      internalID: -1502739275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_5
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 210
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69a4cd24f02c647449ed3628571748f9
+      internalID: 1450548800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_6
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 210
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b7b67c2b2c2ed446aa5ecd96d155d86
+      internalID: 2057155378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_7
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 210
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c7aa1032c5bac941b6ef63f320098d8
+      internalID: -1269278964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_8
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 210
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aeae40c38f94d648be68a2b3c1b6203
+      internalID: -1188080083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 175
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b96057a7e69b844a9d02eec5a12af3f
+      internalID: 760644743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_10
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 175
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a010e858a7dcd140a4230a085e7b9c0
+      internalID: -55200732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_11
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 175
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a193f51cef2b1c4aa5a1915db79d586
+      internalID: 1675254723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_12
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 175
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8413450e856b114abce272ea8c7076b
+      internalID: -1638667577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_13
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 175
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74349530f80a73148ab1de0d231e5793
+      internalID: -751776754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_14
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 175
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5fb37e1ad078874cb771dbfc5037b7c
+      internalID: -1248318772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_15
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 175
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 964fcbaf722fca142aa69a22192b32b3
+      internalID: 1016682073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_16
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 175
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67420441f93b58b478543fdbd537cb82
+      internalID: 608068543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_17
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 175
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b40c09994966494d8fb263804f2c511
+      internalID: -1487045598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19477ef3ad66a29489be460975618eda
+      internalID: 2108677296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_19
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 140
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0587f4084dc65f148b063c9d18414c56
+      internalID: 815883357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_20
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 140
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 499d963b55c22db488f8023d106c9e0a
+      internalID: 1000859152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_21
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 140
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd0d3456fce3f20408546ba25d2103e6
+      internalID: 1703982633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_22
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 140
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fefe6a265c617d44a3a6ca3a27b2c73
+      internalID: -1780452458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_23
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 140
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfab517de5f689c41afb9dc9a5d92d9b
+      internalID: -262304664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_24
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 140
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45be71b8fd9729740980aed3511b15d7
+      internalID: -1753718762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_25
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 140
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bd753346297f024b978b4e783724b16
+      internalID: 609164341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_26
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 140
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef5437beaf36be94f9083adc8a2939cd
+      internalID: -617026945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 105
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a39dcec009002744d8bfb5b471e00e3c
+      internalID: 1602005148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_28
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 105
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3531ea50caec67e40aa6ee9156542d84
+      internalID: -331407978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_29
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 105
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3cf01a9fe04f6a4086f92db8c6a1c83
+      internalID: -1873503123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_30
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 105
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 810edfb26fc2225469f9eb99d0af39b1
+      internalID: 1367920749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_31
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 105
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbe77f82d0cdc5647b90fcaa82c175da
+      internalID: -632066982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_32
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 105
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dce6c3069c032b4cabf341dbb1e5c95
+      internalID: -1675943607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_33
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 105
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f11e03bf118cbca4e9e889adabbf1b2c
+      internalID: 333653262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_34
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 105
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc50398d011dda04591a590817334797
+      internalID: 1567242113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_35
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 105
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01c30ed84953c2e4d9e6f0391aaf02b8
+      internalID: -172160012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 70
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6702241cae73daa4eb71ea9c6adfad38
+      internalID: 86016724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_37
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 70
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acde22cf58757d04daa0b45d6cc4e25d
+      internalID: 416455288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_38
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 70
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be1f9d0a0f3e758468b138f2de84f432
+      internalID: -2007552132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_39
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 70
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f592613db20abb340a69fec8d48701ea
+      internalID: 555792661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_40
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 70
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a51e044576d4e428f005dacc197565
+      internalID: 356355849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_41
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 70
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d51779bbdecbbab41ac61c19dfecc33d
+      internalID: -1902559396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_42
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 70
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d047df702ef11af4c8af4bf7c625fc49
+      internalID: -86148981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_43
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 70
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 712c27e040f84a24e8175ee56a7a64e3
+      internalID: 963465263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_44
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 70
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6eefe460b545224e8470b990044ee17
+      internalID: 796991914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 35
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03b017cab28a9e44c945b68b5ca4f610
+      internalID: 2062425058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_46
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 35
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 235602cb36b66f44b8f0f3a78b6119f6
+      internalID: -1983500290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_47
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 35
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e15bfe4a2bd624428a2512b4d81ed63
+      internalID: 283312657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_48
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 35
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 853e043f89593f2488f3a003882da112
+      internalID: -572587200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_49
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 35
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c42db943d0a9ff249b0abd3360dd4dc4
+      internalID: 1484292690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_50
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 35
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4ba4add9939d9a42bb08fcda478c125
+      internalID: -1431066147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_51
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 35
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b31a7568434c1d4a952bf12dc6aa885
+      internalID: 965587811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_52
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 35
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4df562f914d13ec4fa0920d3a55b45a3
+      internalID: -946620340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_53
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 35
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f65c4a16637ba684085dec31689971ed
+      internalID: 185011419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e9a7b2af7860b4f9369ac5679189d9
+      internalID: -39745000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_55
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 0
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2473d65fa886eb148b0441a567a374df
+      internalID: 1358275454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_56
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 0
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b76c8517d456054abc086be90dd9625
+      internalID: -414960466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_57
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 0
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73eb83e411286a54e91a70e445cb3be8
+      internalID: 205804488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_58
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 0
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a18c9a4690dbce441af2e96887543009
+      internalID: 155832030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy2 dodge bake_23x35_59
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 0
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30a38e1883c37cb42bd7d145ecd2c1b6
+      internalID: 608180707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 88cef3b33f0416a4fb230082c634c538
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      enemy2 dodge bake_23x35_0: 2067196895
+      enemy2 dodge bake_23x35_1: 807022505
+      enemy2 dodge bake_23x35_10: -55200732
+      enemy2 dodge bake_23x35_11: 1675254723
+      enemy2 dodge bake_23x35_12: -1638667577
+      enemy2 dodge bake_23x35_13: -751776754
+      enemy2 dodge bake_23x35_14: -1248318772
+      enemy2 dodge bake_23x35_15: 1016682073
+      enemy2 dodge bake_23x35_16: 608068543
+      enemy2 dodge bake_23x35_17: -1487045598
+      enemy2 dodge bake_23x35_18: 2108677296
+      enemy2 dodge bake_23x35_19: 815883357
+      enemy2 dodge bake_23x35_2: 1300834509
+      enemy2 dodge bake_23x35_20: 1000859152
+      enemy2 dodge bake_23x35_21: 1703982633
+      enemy2 dodge bake_23x35_22: -1780452458
+      enemy2 dodge bake_23x35_23: -262304664
+      enemy2 dodge bake_23x35_24: -1753718762
+      enemy2 dodge bake_23x35_25: 609164341
+      enemy2 dodge bake_23x35_26: -617026945
+      enemy2 dodge bake_23x35_27: 1602005148
+      enemy2 dodge bake_23x35_28: -331407978
+      enemy2 dodge bake_23x35_29: -1873503123
+      enemy2 dodge bake_23x35_3: -2099089213
+      enemy2 dodge bake_23x35_30: 1367920749
+      enemy2 dodge bake_23x35_31: -632066982
+      enemy2 dodge bake_23x35_32: -1675943607
+      enemy2 dodge bake_23x35_33: 333653262
+      enemy2 dodge bake_23x35_34: 1567242113
+      enemy2 dodge bake_23x35_35: -172160012
+      enemy2 dodge bake_23x35_36: 86016724
+      enemy2 dodge bake_23x35_37: 416455288
+      enemy2 dodge bake_23x35_38: -2007552132
+      enemy2 dodge bake_23x35_39: 555792661
+      enemy2 dodge bake_23x35_4: -1502739275
+      enemy2 dodge bake_23x35_40: 356355849
+      enemy2 dodge bake_23x35_41: -1902559396
+      enemy2 dodge bake_23x35_42: -86148981
+      enemy2 dodge bake_23x35_43: 963465263
+      enemy2 dodge bake_23x35_44: 796991914
+      enemy2 dodge bake_23x35_45: 2062425058
+      enemy2 dodge bake_23x35_46: -1983500290
+      enemy2 dodge bake_23x35_47: 283312657
+      enemy2 dodge bake_23x35_48: -572587200
+      enemy2 dodge bake_23x35_49: 1484292690
+      enemy2 dodge bake_23x35_5: 1450548800
+      enemy2 dodge bake_23x35_50: -1431066147
+      enemy2 dodge bake_23x35_51: 965587811
+      enemy2 dodge bake_23x35_52: -946620340
+      enemy2 dodge bake_23x35_53: 185011419
+      enemy2 dodge bake_23x35_54: -39745000
+      enemy2 dodge bake_23x35_55: 1358275454
+      enemy2 dodge bake_23x35_56: -414960466
+      enemy2 dodge bake_23x35_57: 205804488
+      enemy2 dodge bake_23x35_58: 155832030
+      enemy2 dodge bake_23x35_59: 608180707
+      enemy2 dodge bake_23x35_6: 2057155378
+      enemy2 dodge bake_23x35_7: -1269278964
+      enemy2 dodge bake_23x35_8: -1188080083
+      enemy2 dodge bake_23x35_9: 760644743
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
