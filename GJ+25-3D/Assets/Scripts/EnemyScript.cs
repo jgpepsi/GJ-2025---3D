@@ -70,17 +70,14 @@ public class EnemyScript : MonoBehaviour
             }
             else
             {
-                ApplyKnockback();
+                StartCoroutine(ApplyKnockback());
             }
         }
     }
-    public void ApplyKnockback()
-    {
-        rb.AddForce((transform.position - player.transform.position).normalized * 5f, ForceMode.Impulse);
-    }
+    
     
 
-    /*private IEnumerator ApplyKnockback()
+    private IEnumerator ApplyKnockback()
     {
         isDisplacing = true;
 
@@ -109,7 +106,7 @@ public class EnemyScript : MonoBehaviour
         transform.position = end;
 
         isDisplacing = false;
-    }*/
+    }
 
     private IEnumerator Dodge() 
     {
