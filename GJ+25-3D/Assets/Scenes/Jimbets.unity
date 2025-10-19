@@ -13176,10 +13176,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 83739138931135316, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2113322280, guid: 43f2e70115bd4db41a2beff3139e885b, type: 3}
     - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: spawnInterval
       value: 1
@@ -13196,6 +13192,18 @@ PrefabInstance:
       propertyPath: chancesList.Array.data[3].enemy
       value: 
       objectReference: {fileID: 3902108499948905999, guid: eaf4b7e50b4467343b91ec2c553655fa, type: 3}
+    - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
+      propertyPath: chancesList.Array.data[0].chance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
+      propertyPath: chancesList.Array.data[2].chance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 848862739637577641, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
+      propertyPath: chancesList.Array.data[3].chance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2093744334489970627, guid: 125729befad1d8e429408c9b73e4feed, type: 3}
       propertyPath: m_Name
       value: Player
