@@ -28,6 +28,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private int waveGoal = 10;
 
+    public HUDController hudController;
+
     [SerializeField]
     private int chanceSum;
 
@@ -52,6 +54,7 @@ public class SpawnManager : MonoBehaviour
             {
                 var enemy = Instantiate(GetRandomEnemy(), spawnPosRight.position, Quaternion.identity);
                 enemy.GetComponent<EnemyScript>().spawnManager = this;
+                enemy.GetComponent<EnemyScript>().hudController = hudController;
             }
         }
         else
@@ -60,6 +63,7 @@ public class SpawnManager : MonoBehaviour
             {
                 var enemy = Instantiate(GetRandomEnemy(), spawnPosLeft.position, Quaternion.identity);
                 enemy.GetComponent<EnemyScript>().spawnManager = this;
+                enemy.GetComponent<EnemyScript>().hudController = hudController;
             }
         }
     }
