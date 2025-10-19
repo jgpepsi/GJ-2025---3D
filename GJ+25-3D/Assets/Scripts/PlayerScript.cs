@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Android;
 
 [DisallowMultipleComponent]
 public class PlayerScript : MonoBehaviour
@@ -29,6 +30,12 @@ public class PlayerScript : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject piercingProjectilePrefab;
     public float shotSpeed = 12f;
+
+    public bool isShielded;
+    public bool hasDeadlyAttack;
+    public int nCounter = 0;
+    public GameObject deathHitbox;
+    public bool canTakeDamage;
 
     private SpriteRenderer spr;
     private Rigidbody rb;
@@ -74,6 +81,7 @@ public class PlayerScript : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody>();
         isDashing = false;
+        canTakeDamage = true;
         attackTimer = attackCooldown;
     }
 
@@ -90,9 +98,7 @@ public class PlayerScript : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow) && attackTimer >= attackCooldown)
             TryExecuteCombo(rightAtkPoint, isRightSide: true);
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            if (!isDashing)
-                DoubleAttack(rightAtkPoint);
+        
     }
 
     public void FlipX(float horizontal)
@@ -174,12 +180,30 @@ public class PlayerScript : MonoBehaviour
     // =======================
     public void Attack(Transform atkPoint)
     {
-        
         if (atkPoint == null) return;
         Collider[] hits = Physics.OverlapSphere(atkPoint.position, atkRange, enemyLayer);
         Collider target = GetClosest(hits);
-        if (target != null) StartCoroutine(DashAndHit(atkPoint, target));
-        else StartCoroutine(DashAndMiss(atkPoint, true));
+        if (target != null)
+        {
+            StartCoroutine(DashAndHit(atkPoint, target));
+        }
+        else
+        {
+            StartCoroutine(DashAndMiss(atkPoint, true));
+        }
+    }
+
+    public void UseSpecialAttack()
+    {
+        GameObject prefab = deathHitbox;
+        if (prefab == null) return;
+        GameObject bullet = Instantiate(prefab, transform.position, Quaternion.identity);
+        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+        if (bulletRb != null)
+        {
+            Vector3 direction = spr != null && spr.flipX ? Vector3.left : Vector3.right;
+            bulletRb.linearVelocity = direction * 10;
+        }
     }
 
     public void DoubleAttack(Transform atkPoint)
@@ -224,15 +248,39 @@ public class PlayerScript : MonoBehaviour
             float t = elapsed / dashDuration;
             Vector3 next = Vector3.Lerp(start, end, t);
             rb.MovePosition(next);
+            Collider[] hits = Physics.OverlapSphere(atkPoint.position, atkRange, enemyLayer);
+            if (hits.Length > 1)
+            {
+                //TimeManager.TimeInstance.ActivateSlowMotion(0.2f, 1f);
+                //slowApplied = true;
+            }
             elapsed += Time.deltaTime;
             yield return null;
         }
 
+        ScreenShake.Instance.Shake(0.1f, 0.01f);
+        AudioManager.instance.PlaySFX(ChooseSFX());
         rb.MovePosition(end);
         var enemy = target.GetComponent<EnemyScript>();
         if (enemy != null) enemy.TakeDamage(1);
         rb.linearVelocity = Vector3.zero;
+        StartCoroutine(IFrames());
         isDashing = false;
+     
+    }
+
+    public string ChooseSFX()
+    {
+        int random = Random.Range(0, 2);
+        switch (random)
+        {
+            case 0:
+                return "LoboCorte1";
+            case 1:
+                return "LoboCorte2";
+            default:
+                return "LoboCorte3";
+        }
     }
 
     private IEnumerator DashAndMiss(Transform atkPoint, bool canDebuff)
@@ -256,6 +304,7 @@ public class PlayerScript : MonoBehaviour
         rb.MovePosition(end);
         rb.linearVelocity = Vector3.zero;
         if (canDebuff) attackTimer = 0f;
+        StartCoroutine(IFrames());
         isDashing = false;
         //anim.SetTrigger("Miss");
     }
@@ -330,8 +379,27 @@ public class PlayerScript : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        AudioManager.instance.PlaySFX("LoboApanha");
         health -= damage;
+        Debug.Log("Player took damage!");
+        FreezeAllEnemies(0.25f);
+        ScreenShake.Instance.Shake(0.1f, 0.02f);
         if (health <= 0) Destroy(gameObject); //ao invés disso, volta pro main menu
+    }
+
+    public IEnumerator IFrames()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(0.5f);
+        canTakeDamage = true;
+    }
+
+    public void FreezeAllEnemies(float value)
+    {
+        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            enemy.GetComponent<EnemyScript>().StartCoroutine(enemy.GetComponent<EnemyScript>().Paralyze(value));
+        }
     }
 
     private void OnDrawGizmos()
@@ -343,7 +411,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && !isDashing)
+        if (collision.gameObject.CompareTag("Enemy") && !isDashing && canTakeDamage)
         {
             TakeDamage(1);
             Destroy(collision.gameObject);
@@ -408,5 +476,11 @@ public class PlayerScript : MonoBehaviour
 
             default: break;
         }
+    }
+
+    public void GiveDeadlyAttack()
+    {
+        hasDeadlyAttack = true;
+        nCounter = 0;
     }
 }

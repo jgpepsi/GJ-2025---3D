@@ -18,7 +18,6 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemyPrefab;
     public float spawnInterval;
     public float minSpawnInterval;
-    public LayerMask enemyLayer;
     public List<EnemyChance> chancesList = new List<EnemyChance>();
     private CardSpawnController cardSpawnController;
 
@@ -40,13 +39,15 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        Collider[] hits;
+        float checkRadius = 0.25f;
+        LayerMask enemyLayerMask = LayerMask.GetMask("Enemy");
 
-        if (Random.Range(0,2) > 0)
+        bool rightBlocked = Physics.CheckSphere(spawnPosRight.position, checkRadius, enemyLayerMask);
+        bool leftBlocked = Physics.CheckSphere(spawnPosLeft.position, checkRadius, enemyLayerMask);
+
+        if (Random.Range(0, 2) > 0)
         {
-            hits = Physics.OverlapSphere(spawnPosRight.position, .75f, enemyLayer);
-
-            if (hits.Length < 1)
+            if (!rightBlocked)
             {
                 var enemy = Instantiate(GetRandomEnemy(), spawnPosRight.position, Quaternion.identity);
                 enemy.GetComponent<EnemyScript>().spawnManager = this;
@@ -54,14 +55,11 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
-            hits = Physics.OverlapSphere(spawnPosRight.position, .75f, enemyLayer);
-
-            if (hits.Length < 1)
+            if (!leftBlocked)
             {
                 var enemy = Instantiate(GetRandomEnemy(), spawnPosLeft.position, Quaternion.identity);
                 enemy.GetComponent<EnemyScript>().spawnManager = this;
             }
-
         }
     }
 
@@ -93,8 +91,13 @@ public class SpawnManager : MonoBehaviour
         waveProgress = 0;
         if (spawnInterval >= minSpawnInterval)
         {
-            spawnInterval -= .1f;
+            spawnInterval -= .05f;
+            if (spawnInterval <= 0.7f)
+            {
+                spawnInterval = 0.7f;
+            }
         }
+        
         
         chanceSum = 0;
 
@@ -111,7 +114,14 @@ public class SpawnManager : MonoBehaviour
         waveProgress += amount;
         if(waveProgress >= waveGoal)
         {
-            cardSpawnController.ShowCardSpawner();
+            NextWave();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(spawnPosRight.position, 0.5f);
+        Gizmos.DrawSphere(spawnPosLeft.position, 0.5f);
     }
 }
