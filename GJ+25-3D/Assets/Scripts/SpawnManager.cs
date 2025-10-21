@@ -42,7 +42,7 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        float checkRadius = 0.25f;
+        float checkRadius = 0.5f;
         LayerMask enemyLayerMask = LayerMask.GetMask("Enemy");
 
         bool rightBlocked = Physics.CheckSphere(spawnPosRight.position, checkRadius, enemyLayerMask);
@@ -96,7 +96,7 @@ public class SpawnManager : MonoBehaviour
         waveProgress = 0;
         if (spawnInterval >= minSpawnInterval)
         {
-            spawnInterval -= .05f;
+            spawnInterval -= .1f;
             if (spawnInterval <= 0.7f)
             {
                 spawnInterval = 0.7f;
